@@ -254,13 +254,26 @@ double *LJ_force(double alist[3],double blist[3]){
 }
 
 
-double energy(Atom atom1){
+double *energy_force(Atom atom1){
+    static double energy_force[4];
     double energy = 0.0;
+    double force[3] = {0};
     for (int i = 0; i < atom1.nei_num; i++)
     {
         energy = energy + LJ_potential(atom1.pos,atoms[atom1.nei_list[i]].pos);
+        for (int j = 0; j < 3; j++)
+        {
+            force[j] =  force[j] + LJ_force(atom1.pos,atoms[atom1.nei_list[i]].pos)[j];
+        }
+        
     }
-    return energy;
+    energy_force[0] = energy;
+    for (int k =1; k < 4; k++)
+    {
+        energy_force[k] = force[k];
+    }
+    
+    return energy_force;
 }
 
 
@@ -269,8 +282,8 @@ int main() {
     set_atoms();
     set_neighlist();
     cout << signbit(-0.2) << endl;
-    cout << energy(atoms[13]) << endl; //test
-    cout << LJ_force(atoms[11].pos,atoms[9].pos)[1] << endl;
+    cout << energy_force(atoms[13])[0] << endl; //test
+    cout << energy_force(atoms[13])[2] << endl;
        
     return 0;
 }
