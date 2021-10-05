@@ -231,13 +231,19 @@ double LJ_potential(double alist[3],double blist[3]){
     return u;
 }
 
+double LJ_force(Atom atom1){
+    double force = 0.0;
+    
+    return force;
+}
+
+
 double energy(Atom atom1){
     double energy = 0.0;
     for (int i = 0; i < atom1.nei_num; i++)
     {
         energy = energy + LJ_potential(atom1.pos,atoms[atom1.nei_list[i]].pos);
     }
-
     return energy;
 }
 
@@ -246,6 +252,7 @@ int main() {
     initialize();
     set_atoms();
     set_neighlist();
+    cout << signbit(-0.2) << endl;
     cout << energy(atoms[13]) << endl; //test
        
     return 0;
