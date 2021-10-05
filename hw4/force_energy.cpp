@@ -231,9 +231,25 @@ double LJ_potential(double alist[3],double blist[3]){
     return u;
 }
 
-double LJ_force(Atom atom1){
-    double force = 0.0;
+double *LJ_force(double alist[3],double blist[3]){
+    static double force[3];
+    double r_ab;
+    double tem;
+    double dir[3] = {0};
+    for (int i = 0; i < 3; i++)
+    {
+        dir[i] = alist[i] - blist[i];
+    }
     
+    r_ab = distance(alist,blist);
+    tem = pow(sigma/r_ab,6);
+    if (r_ab < r_cut)
+    {   
+        for (int i = 0; i < 3; i++)
+        {
+            force[i] = 4*epsilon*(12*pow(tem,2)-6*tem)*dir[i]/pow(r_ab,2);
+        }
+    }
     return force;
 }
 
@@ -254,6 +270,7 @@ int main() {
     set_neighlist();
     cout << signbit(-0.2) << endl;
     cout << energy(atoms[13]) << endl; //test
+    cout << LJ_force(atoms[11].pos,atoms[9].pos)[1] << endl;
        
     return 0;
 }
