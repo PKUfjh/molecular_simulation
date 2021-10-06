@@ -4,7 +4,6 @@
 #include <typeinfo>
 #include <string.h>
 #include <iomanip>
-#include <stdlib.h>
 #include <math.h>
 
 using namespace std;
@@ -283,6 +282,7 @@ int main() {
     initialize();
     set_atoms();
     set_neighlist();
+    cout << atoms[11].nei_num << endl;
     cout << signbit(-0.2) << endl;
     cout << energy_force(atoms[13])[0] << endl; //test
     cout << energy_force(atoms[13])[2] << endl;
