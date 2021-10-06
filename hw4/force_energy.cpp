@@ -1,8 +1,10 @@
 #include <iostream>
+#include <stdio.h>
 #include <fstream>
 #include <typeinfo>
 #include <string.h>
 #include <iomanip>
+#include <stdlib.h>
 #include <math.h>
 
 using namespace std;
@@ -75,12 +77,12 @@ class Atom
 private:
     /* data */
 public:
-    string ID;
+    string ID ;
     int index;
     double pos[3];
     double vel[3];
     int nei_num;
-    int *nei_list = new int[nei_num];
+    int *nei_list;
     // declare function
     void setpos(double position[3]);
     void setvel(double velocity[3]);
