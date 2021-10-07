@@ -1,10 +1,10 @@
 #include <math.h>
-#include "distance.h"
+#include "pos_distance.h"
 
 using namespace std;
 
 //compute the distance between two coordinates
-double distance(double alist[3], double blist[3]){
+double pos_distance(double alist[3], double blist[3]){
     double dis = 0.0;
     for (int i = 0; i < 3; i++)
     {

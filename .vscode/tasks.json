@@ -7,12 +7,7 @@
             "command": "/usr/bin/clang++",
             "args": [
                 "-g",
-                "neighbor.cpp",
-                "pos_distance.cpp",
-                "parameters.cpp",
-                "initialize.cpp",
-                "force_energy.cpp",
-                "main.cpp",
+                "${fileDirname}/*.cpp",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],

@@ -5,7 +5,7 @@
 #include <iomanip>
 #include <math.h>
 #include <vector>
-#include "distance.h"
+#include "pos_distance.h"
 #include "parameters.h"
 
 using namespace std;
@@ -104,7 +104,7 @@ void set_neighlist(){
                 continue;
             }
             
-            double dist = distance(atoms[i].pos,atoms[j].pos);
+            double dist = pos_distance(atoms[i].pos,atoms[j].pos);
             // save all the atoms within the radius r_cut+extra_cut into neighbor list
             if (dist <= (r_cut + extra_cut)) 
             {

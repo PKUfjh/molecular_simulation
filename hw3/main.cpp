@@ -4,14 +4,13 @@
 #include <string.h>
 #include <iomanip>
 #include <math.h>
-#include "distance.h"
 #include "parameters.h"
 #include "initialize.h"
 #include "neighbor.h"
 
 using namespace std;
 
-ifstream infile;
+// ifstream infile;
 ofstream outfile;
 
 /* 
@@ -40,6 +39,8 @@ int main() {
     outfile << "neighbor list for #12 atom" << endl;
     int index = 11;
     outfile << "neighbor_number " << atoms[index].nei_num << endl;
+    outfile.close();
+    outfile.open("geo12.out",ios::app);
     for (int i = 0; i < atoms[index].nei_num; i++)
     {   
     int neighbor_num = atoms[index].nei_list[i];
@@ -52,7 +53,6 @@ int main() {
     outfile << "\n";
     }
     outfile.close();
-    
     
     
     return 0;
