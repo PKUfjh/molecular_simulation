@@ -5,8 +5,19 @@
 
 using namespace std;
 
+/* 
+global parameters from the input file
+
+natoms: number of atoms in the system
+neighbor_n: maximum neigh atoms of one atom
+r_cut: cutoff radius for L-J potential
+extra_cut: extra cutoff radius for neighbor atom list
+geo_path: path for the input file */
+
 extern int natoms;extern int neighbor_n;extern double r_cut;extern double extra_cut;extern string geo_path;
 
+/* global class of atoms, 
+saving ID, index, number of neigh atoms, neighbor list, position and velocity of the atoms */
 
 class Atom
 {

@@ -7,7 +7,7 @@ using namespace std;
 
 ifstream infile1;
 
-
+// initialization of the global parameters
 void initialize(){
     infile1.open("input",ios::in);
     char buf[1024];

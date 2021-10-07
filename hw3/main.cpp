@@ -15,11 +15,23 @@ using namespace std;
 ifstream infile;
 ofstream outfile;
 
+/* 
+global parameters from the input file
+
+natoms: number of atoms in the system
+neighbor_n: maximum neigh atoms of one atom
+r_cut: cutoff radius for L-J potential
+extra_cut: extra cutoff radius for neighbor atom list
+geo_path: path for the input file */
+
+/* global class of atoms, class Atom
+saving ID, index, number of neigh atoms, neighbor list, position and velocity of the atoms
+using the class array Atom *atoms  */
 
 int main() {
-    initialize();
-    setatoms();
-    set_neighlist();
+    initialize(); // initialization of the global parameters
+    setatoms(); // setting the ID, index, position and velocity for each atom in *atoms
+    set_neighlist(); // setting the neigh list for each atom in *atoms
     cout << atoms[11].nei_num << endl;
 
     outfile.open("geo12.out",ios::out);

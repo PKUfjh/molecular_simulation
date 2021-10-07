@@ -12,9 +12,8 @@ using namespace std;
 
 ifstream infile_n;
 
-
-// Atom *atoms = new Atom[900];
-
+/* set ID, index, number of neigh atoms, neighbor list, position and velocity
+for each atom in the model in class Atom */
 void setatoms(){
     infile_n.open("geo.in",ios::in);
     const char *startline = "\%ATOMIC_POSTION";
@@ -24,13 +23,13 @@ void setatoms(){
     do
     {
         infile_n.getline(buf,sizeof(buf));
-    } while (strstr(buf,startline) == NULL);
+    } while (strstr(buf,startline) == NULL); //read input file until the startline
 
     int ind = 0;
     while (infile_n.getline(buf,sizeof(buf)))
     {
         double poslist[3];
-        if (strstr(buf,middleline) != NULL)
+        if (strstr(buf,middleline) != NULL) //do the first loop until the middleline
         {
             break;
         }
@@ -61,7 +60,7 @@ void setatoms(){
         }while(p);
         atoms[ind].index = ind;
         atoms[ind].ID = id_name;
-        atoms[ind].setpos(poslist);
+        atoms[ind].setpos(poslist); //set ID, index, position for each atom in the first loop
         ind++;
     };
 
@@ -86,12 +85,12 @@ void setatoms(){
         vellist[pos] = A_num;
         pos ++;
         }while(p);
-        atoms[ind].setvel(vellist);
+        atoms[ind].setvel(vellist); //set velocity for each atom in the second loop
         ind++;
     };
 }
 
-
+// set neighbor list for each atom in the model in class Atom
 void set_neighlist(){
     int nlist[natoms]; 
     int list[natoms][neighbor_n];
@@ -106,7 +105,8 @@ void set_neighlist(){
             }
             
             double dist = distance(atoms[i].pos,atoms[j].pos);
-            if (dist <= (r_cut + extra_cut))
+            // save all the atoms within the radius r_cut+extra_cut into neighbor list
+            if (dist <= (r_cut + extra_cut)) 
             {
                 list[i][nlist[i]] = j;
                 nlist[i]++;
