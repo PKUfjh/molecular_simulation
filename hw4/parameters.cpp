@@ -8,7 +8,7 @@ int natoms = 0; int neighbor_n = 0; double r_cut = 0; double extra_cut = 0; stri
 double epsilon = 0.0;double sigma = 0.0;
 
 
-Atom *atoms = new Atom[900];
+Atom *atoms = new Atom[1024];
 
 //set position and velocity array for the Atom class
 void Atom::setpos(double position[3]){
