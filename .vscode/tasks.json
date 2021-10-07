@@ -8,9 +8,10 @@
             "args": [
                 "-g",
                 "neighbor.cpp",
-                "distance.cpp",
+                "pos_distance.cpp",
                 "parameters.cpp",
                 "initialize.cpp",
+                "force_energy.cpp",
                 "main.cpp",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
