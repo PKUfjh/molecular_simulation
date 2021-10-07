@@ -7,56 +7,27 @@
 #include <vector>
 #include "distance.h"
 #include "parameters.h"
-#include "initialize.h"
 
 using namespace std;
 
-ifstream infile;
-ofstream outfile;
+ifstream infile_n;
 
 
-class Atom
-{
-private:
-    /* data */
-public:
-    string ID;
-    int index;
-    double pos[3];
-    double vel[3];
-    int nei_num;
-    int *nei_list;
-    // declare function
-    void setpos(double position[3]);
-    void setvel(double velocity[3]);
-    // void setneighbor_num(int neighbor_num);
-    // void setneighbor_list(int *neighbot_list);
-};
-
-
-void Atom::setpos(double position[3]){
-    memcpy(pos,position,sizeof(pos));
-}
-
-void Atom::setvel(double velocity[3]){
-    memcpy(vel,velocity,sizeof(vel));
-}
-
-Atom *atoms = new Atom[900];
+// Atom *atoms = new Atom[900];
 
 void setatoms(){
-    infile.open("geo.in",ios::in);
+    infile_n.open("geo.in",ios::in);
     const char *startline = "\%ATOMIC_POSTION";
     const char *middleline = "\%ATOMIC_VELOCITY";
     char buf[1024];
 
     do
     {
-        infile.getline(buf,sizeof(buf));
+        infile_n.getline(buf,sizeof(buf));
     } while (strstr(buf,startline) == NULL);
 
     int ind = 0;
-    while (infile.getline(buf,sizeof(buf)))
+    while (infile_n.getline(buf,sizeof(buf)))
     {
         double poslist[3];
         if (strstr(buf,middleline) != NULL)
@@ -95,7 +66,7 @@ void setatoms(){
     };
 
     ind = 0;
-    while (infile.getline(buf,sizeof(buf)))
+    while (infile_n.getline(buf,sizeof(buf)))
     {   
         double vellist[3];
         const char *d = "\t";
@@ -145,33 +116,4 @@ void set_neighlist(){
         atoms[i].nei_list = list[i];
     }
 
-}
-
-
-int main() {
-    initialize();
-    setatoms();
-    set_neighlist();
-    cout << atoms[11].nei_num << endl;
-
-    outfile.open("geo12.out",ios::out);
-    outfile << "neighbor list for #12 atom" << endl;
-    int index = 11;
-    outfile << "number of neighbors: " << atoms[index].nei_num << endl;
-    for (int i = 0; i < atoms[index].nei_num; i++)
-    {   
-    int neighbor_num = atoms[index].nei_list[i];
-
-    outfile << atoms[index].nei_list[i] << "\t";
-    for (int i = 0; i < 3; i++)
-    {
-        outfile << atoms[neighbor_num].pos[i] << "\t";
-    }
-    outfile << "\n";
-    
-    }
-    
-    
-    
-    return 0;
 }
