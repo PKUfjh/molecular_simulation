@@ -34,6 +34,7 @@ int main() {
     for (int i = 0; i < natoms; i++)
     {
         outfile << atoms[i].ID << "\t";
+        outfile.precision(12);
         outfile << energy_force(atoms[i])[0] << endl;//output the energy of each atom
     }
     outfile.close();
@@ -42,6 +43,7 @@ int main() {
     for (int i = 0; i < natoms; i++)
     {
         outfile << atoms[i].ID << "\t";
+        outfile.precision(12);
         outfile << energy_force(atoms[i])[1] << "\t";
         outfile << energy_force(atoms[i])[2] << "\t";
         outfile << energy_force(atoms[i])[3] << endl;

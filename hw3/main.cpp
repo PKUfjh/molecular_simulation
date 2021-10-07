@@ -46,7 +46,8 @@ int main() {
 
     outfile << atoms[index].nei_list[i] << "\t";
     for (int i = 0; i < 3; i++)
-    {
+    {   
+        outfile.precision(15);
         outfile << atoms[neighbor_num].pos[i] << "\t";
     }
     outfile << "\n";
