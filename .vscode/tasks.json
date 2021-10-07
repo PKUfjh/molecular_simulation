@@ -11,6 +11,7 @@
                 "distance.cpp",
                 "parameters.cpp",
                 "initialize.cpp",
+                "main.cpp",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],
