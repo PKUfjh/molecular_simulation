@@ -32,12 +32,12 @@ int main() {
     initialize(); // initialization of the global parameters
     setatoms(); // setting the ID, index, position and velocity for each atom in *atoms
     set_neighlist(); // setting the neigh list for each atom in *atoms
-    cout << atoms[11].nei_num << endl;
+    cout << "number of neighbor atoms of #12 atom: "<< atoms[11].nei_num << endl; //test for the number of neighbor atoms
 
     outfile.open("geo12.out",ios::out);
     outfile << "neighbor list for #12 atom" << endl;
     int index = 11;
-    outfile << "number of neighbors: " << atoms[index].nei_num << endl;
+    outfile << "neighbor_number " << atoms[index].nei_num << endl;
     for (int i = 0; i < atoms[index].nei_num; i++)
     {   
     int neighbor_num = atoms[index].nei_list[i];
