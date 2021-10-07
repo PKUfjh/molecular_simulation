@@ -4,7 +4,6 @@
 #include <string.h>
 #include <iomanip>
 #include <math.h>
-#include <vector>
 #include "distance.h"
 #include "parameters.h"
 #include "initialize.h"
@@ -49,8 +48,8 @@ int main() {
         outfile << atoms[neighbor_num].pos[i] << "\t";
     }
     outfile << "\n";
-    
     }
+    outfile.close();
     
     
     
