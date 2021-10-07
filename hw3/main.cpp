@@ -23,9 +23,11 @@ r_cut: cutoff radius for L-J potential
 extra_cut: extra cutoff radius for neighbor atom list
 geo_path: path for the input file */
 
-/* global class of atoms, class Atom
-saving ID, index, number of neigh atoms, neighbor list, position and velocity of the atoms
-using the class array Atom *atoms  */
+/* global class of atoms
+
+class Atom: saving ID, index, number of neigh atoms, neighbor list, position and velocity of the atoms
+Atom *atoms: class array saving all the atoms information 
+*/
 
 int main() {
     initialize(); // initialization of the global parameters
