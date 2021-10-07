@@ -12,7 +12,6 @@
 using namespace std;
 
 ifstream infile;
-ofstream outfile;
 
 //L-J potential of two input coordinates
 double LJ_potential(double alist[3],double blist[3]){

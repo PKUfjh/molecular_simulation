@@ -1,10 +1,13 @@
 #include <iostream>
+#include <fstream>
 #include "parameters.h"
 #include "initialize.h"
 #include "neighbor.h"
 #include "force_energy.h"
 
 using namespace std;
+
+ofstream outfile;
 
 /* 
 global parameters from the input file
@@ -27,10 +30,23 @@ int main() {
     initialize();// initialization of the global parameters
     setatoms();  // setting the ID, index, position and velocity for each atom in *atoms
     set_neighlist();  // setting the neigh list for each atom in *atoms
-    cout << energy_force(atoms[13])[0] << endl;//output the energy of total force of #12 atom
-    cout << energy_force(atoms[13])[1] << endl; //output the first component of total force of #12 atom
-    cout << energy_force(atoms[13])[2] << endl;//output the second component of total force of #12 atom
-    cout << energy_force(atoms[13])[3] << endl; //output the third component of total force of #12 atom
+    outfile.open("energy.txt",ios::out);
+    for (int i = 0; i < natoms; i++)
+    {
+        outfile << atoms[i].ID << "\t";
+        outfile << energy_force(atoms[i])[0] << endl;//output the energy of each atom
+    }
+    outfile.close();
+    outfile.open("force.txt",ios::out);
+    //output the total force of each atom
+    for (int i = 0; i < natoms; i++)
+    {
+        outfile << atoms[i].ID << "\t";
+        outfile << energy_force(atoms[i])[1] << "\t";
+        outfile << energy_force(atoms[i])[2] << "\t";
+        outfile << energy_force(atoms[i])[3] << endl;
+    }
+    outfile.close();
        
     return 0;
 }

@@ -2,7 +2,6 @@
 #include <fstream>
 #include <typeinfo>
 #include <string.h>
-#include <iomanip>
 #include <math.h>
 #include "parameters.h"
 #include "initialize.h"
