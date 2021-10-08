@@ -270,7 +270,7 @@ double *energy_force(Atom atom1){
     energy_force[0] = energy;
     for (int k =1; k < 4; k++)
     {
-        energy_force[k] = force[k];
+        energy_force[k] = force[k-1];
     }
     
     return energy_force;
@@ -283,7 +283,7 @@ int main() {
     set_neighlist();
     cout << signbit(-0.2) << endl;
     cout << energy_force(atoms[13])[0] << endl; //test
-    cout << energy_force(atoms[13])[2] << endl;
+    cout << energy_force(atoms[13])[3] << endl;
        
     return 0;
 }
