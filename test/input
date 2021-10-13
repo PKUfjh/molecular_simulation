@@ -1,0 +1,8 @@
+id He
+natoms 864
+
+geo_path geo.in
+
+r_cut 8.5 %rcut for L-J potential
+extra_cut 2 %extra distance for neighbor list
+neighbor_n 300 % maximum number of neighbor atoms

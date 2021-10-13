@@ -55,7 +55,6 @@ double pos_distance(double alist[3], double blist[3]){
         pos ++;
         }while(p);
     }
-    infile_v.close();
 
     double dis = 999999999;
     for (int i_1 = 0; i_1 < 3; i_1++){

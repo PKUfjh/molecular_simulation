@@ -111,6 +111,9 @@ void set_neighlist(){
                 list[i][nlist[i]] = j;
                 nlist[i]++;
             }
+            else{
+                continue;
+            }
         }
         atoms[i].nei_num = nlist[i];
         atoms[i].nei_list = list[i];
