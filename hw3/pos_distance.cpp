@@ -7,8 +7,10 @@ using namespace std;
 
 ifstream infile_v;
 
+//vector representing the lattice constant
 double vector_a[3][3] = {{0,0,0},{0,0,0},{0,0,0}};
 
+//compute the distance between two coordinates
 double single_distance(double alist[3],double blist[3]){
     double dis = 0;
     for (int i = 0; i < 3; i++)
@@ -19,7 +21,7 @@ double single_distance(double alist[3],double blist[3]){
     return dis;
 }
 
-//compute the distance between two coordinates
+//compute the distance between two coordinates under PBC
 double pos_distance(double alist[3], double blist[3]){
     char buf[1024];
     infile_v.open("geo.in",ios::in);
@@ -58,6 +60,7 @@ double pos_distance(double alist[3], double blist[3]){
     infile_v.close();
 
     double dis = 999999999;
+    //compute the minimum distane between one atom with the other atom and its mirror
     for (int i_1 = 0; i_1 < 3; i_1++){
         for (int i_2 = 0; i_2 < 3; i_2++)
         {
