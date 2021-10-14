@@ -6,6 +6,7 @@
 #include "parameters.h"
 #include "initialize.h"
 #include "neighbor.h"
+#include "pos_distance.h"
 
 using namespace std;
 

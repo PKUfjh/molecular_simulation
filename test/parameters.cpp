@@ -5,6 +5,7 @@
 using namespace std;
 
 int natoms = 0; int neighbor_n = 0; double r_cut = 0; double extra_cut = 0; string geo_path = "";
+// double vector_a[3][3] = {{0,0,0},{0,0,0},{0,0,0}};
 
 Atom *atoms = new Atom[1024];
 
