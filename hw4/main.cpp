@@ -43,7 +43,7 @@ int main() {
         outfile.precision(12);
         outfile << force[1] << "\t";
         outfile << force[2] << "\t";
-        outfile << force[3] << endl;
+        outfile << force[3] << endl; //output the forces of each atom
         energy += force[0];
     }
     outfile.close();
@@ -52,6 +52,7 @@ int main() {
     outfile <<"total energy: " << energy << endl; //output the total menergy
     outfile.close();
 
+    //release the memory allocated to nei_list
     for (int j = 0; j < natoms; j++)
     {
         for (int k = 0; k < neighbor_n; k++)

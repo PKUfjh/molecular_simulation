@@ -38,7 +38,7 @@ double *pos_distance(double alist[3], double blist[3]){
     for (int j = 0; j < 3; j++)
     {
         infile_v.getline(buf,sizeof(buf));
-        const char *d = "\t";
+        const char *d = " \t";
         char *p= strtok(buf,d);
         if (p == NULL)
         {   

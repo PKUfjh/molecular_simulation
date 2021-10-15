@@ -5,7 +5,6 @@
 #include <iomanip>
 #include <stdlib.h>
 #include <math.h>
-#include <vector>
 #include "pos_distance.h"
 #include "parameters.h"
 
@@ -36,7 +35,7 @@ void setatoms(){
         }
         
         string id_name;
-        const char *d = "\t";
+        const char *d = " \t";
         char *p= strtok(buf,d);
         if (p == NULL)
         {   
@@ -69,7 +68,7 @@ void setatoms(){
     while (infile_n.getline(buf,sizeof(buf)))
     {   
         double vellist[3];
-        const char *d = "\t";
+        const char *d = " \t";
         char *p= strtok(buf,d);
 
         int pos = 0;
@@ -96,8 +95,7 @@ void set_neighlist(){
     int nlist[natoms]; 
     for (int i = 0; i < natoms; i++)
     {   
-        atoms[i].allocate();
-        
+        atoms[i].allocate(); //allocate the memory to the 2D array nei_list
         nlist[i] = 0;
         for (int j = 0; j < natoms; j++)
         {
