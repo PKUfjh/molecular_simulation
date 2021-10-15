@@ -26,10 +26,12 @@ public:
     string ID ;
     int index;
     int nei_num;
-    int *nei_list;
+    double **nei_list;
+    
     double pos[3];
     double vel[3];
     // declare function
+    void allocate();
     void setpos(double position[3]);
     void setvel(double velocity[3]);
 };

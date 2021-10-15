@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <string.h>
 #include "parameters.h"
 #include "initialize.h"
 #include "neighbor.h"
@@ -30,25 +31,36 @@ int main() {
     initialize();// initialization of the global parameters
     setatoms();  // setting the ID, index, position and velocity for each atom in *atoms
     set_neighlist();  // setting the neigh list for each atom in *atoms
+
     outfile.open("energy.txt",ios::out);
+    double energy = 0;
     for (int i = 0; i < natoms; i++)
     {
-        outfile << atoms[i].ID << "\t";
-        outfile.precision(12);
-        outfile << energy_force(atoms[i])[0] << endl;//output the energy of each atom
+        // outfile << atoms[i].ID << "\t";
+        // outfile.precision(12);
+        // outfile << energy_force(atoms[i])[0] << endl;//output the energy of each atom
+        energy += energy_force(atoms[i])[0];
     }
+    outfile.precision(12);
+    outfile <<"total energy: " << energy << endl; //output the total menergy
     outfile.close();
     outfile.open("force.txt",ios::out);
     //output the total force of each atom
     for (int i = 0; i < natoms; i++)
     {
+        double force[4];
+        memcpy(force,energy_force(atoms[i]),sizeof(force));
         outfile << atoms[i].ID << "\t";
         outfile.precision(12);
-        outfile << energy_force(atoms[i])[1] << "\t";
-        outfile << energy_force(atoms[i])[2] << "\t";
-        outfile << energy_force(atoms[i])[3] << endl;
+        outfile << force[1] << "\t";
+        outfile << force[2] << "\t";
+        outfile << force[3] << endl;
     }
     outfile.close();
-       
+
+    for (int j = 0; j < natoms; j++)
+    {
+        delete[] atoms[j].nei_list;
+    }
     return 0;
 }

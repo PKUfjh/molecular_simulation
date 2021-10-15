@@ -94,9 +94,15 @@ void setatoms(){
 // set neighbor list for each atom in the model in class Atom
 void set_neighlist(){
     int nlist[natoms]; 
-    int list[natoms][neighbor_n];
     for (int i = 0; i < natoms; i++)
     {   
+        atoms[i].allocate();
+        double **a_list = new double *[neighbor_n];
+        for (int j = 0; j < neighbor_n; j++)
+        {
+            a_list[j] = new double [4];
+        }
+        
         nlist[i] = 0;
         for (int j = 0; j < natoms; j++)
         {
@@ -104,12 +110,19 @@ void set_neighlist(){
             {
                 continue;
             }
+            double mirror_info[4];
+            memcpy(mirror_info,pos_distance(atoms[i].pos,atoms[j].pos),sizeof(mirror_info));
+            double dist = mirror_info[0];
             
-            double dist = pos_distance(atoms[i].pos,atoms[j].pos);
             // save all the atoms within the radius r_cut+extra_cut into neighbor list
             if (dist <= (r_cut + extra_cut)) 
             {
-                list[i][nlist[i]] = j;
+                a_list[nlist[i]][0] = j;
+                for (int l = 0; l < 3; l++)
+                {
+                    a_list[nlist[i]][l+1] = mirror_info[l+1];
+                }
+                
                 nlist[i]++;
             }
             else{
@@ -117,7 +130,7 @@ void set_neighlist(){
             }
         }
         atoms[i].nei_num = nlist[i];
-        atoms[i].nei_list = list[i];
+        atoms[i].nei_list = a_list;
     }
 
 }

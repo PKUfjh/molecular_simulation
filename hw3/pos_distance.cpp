@@ -24,7 +24,8 @@ double single_distance(double alist[3],double blist[3]){
 }
 
 //compute the distance between two coordinates under PBC
-double pos_distance(double alist[3], double blist[3]){
+double *pos_distance(double alist[3], double blist[3]){
+    static double pos_distance[4];
     char buf[1024];
     infile_v.open("geo.in",ios::in);
     const char *startline = "\%CELL_PARAMETER";
@@ -74,10 +75,21 @@ double pos_distance(double alist[3], double blist[3]){
                 {
                     tem[k] = tem[k] + (i_1 - 1)*vector_a[0][k] + (i_2 - 1)*vector_a[1][k] + (i_3 - 1)*vector_a[2][k];
                 }
-                dis = min(dis,single_distance(alist,tem));
+                double temdis = single_distance(alist,tem);
+                if ( temdis < dis)
+                {
+                    dis = temdis;
+                    pos_distance[0] = dis;
+                    for (int l = 0; l < 3;l++)
+                    {
+                        // pos_distance[l+1] = alist[l] - tem[l];
+                        pos_distance[l+1] = tem[l];
+                    }
+                    
+                }
             }
             
         }
     }
-    return dis;
+    return pos_distance;
 }

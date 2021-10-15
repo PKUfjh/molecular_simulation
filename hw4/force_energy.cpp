@@ -19,7 +19,7 @@ double LJ_potential(double alist[3],double blist[3]){
     double r_ab;
     double tem;
     double tem_cut;
-    r_ab = pos_distance(alist,blist);
+    r_ab = single_distance(alist,blist);
     tem = pow(sigma/r_ab,6);
     tem_cut = pow(sigma/r_cut,6);
     if (r_ab > r_cut)
@@ -28,7 +28,7 @@ double LJ_potential(double alist[3],double blist[3]){
     }else{
         u = 4*epsilon*(pow(tem,2)-tem) - 4*epsilon*(pow(tem_cut,2)-tem_cut);
     }
-    return u;
+    return u/2;
 }
 
 //L-J force of teo input coordinates
@@ -37,18 +37,25 @@ double *LJ_force(double alist[3],double blist[3]){
     double r_ab;
     double tem;
     double dir[3] = {0};
+
     for (int i = 0; i < 3; i++)
     {
         dir[i] = alist[i] - blist[i];
     }
     
-    r_ab = pos_distance(alist,blist);
+    r_ab = single_distance(alist,blist);
     tem = pow(sigma/r_ab,6);
     if (r_ab < r_cut)
     {   
         for (int i = 0; i < 3; i++)
         {
             force[i] = 4*epsilon*(12*pow(tem,2)-6*tem)*dir[i]/pow(r_ab,2);
+        }
+    }
+    else{
+        for (int i = 0; i < 3; i++)
+        {
+            force[i] = 0;
         }
     }
     return force;
@@ -61,12 +68,11 @@ double *energy_force(Atom atom1){
     double force[3] = {0};
     for (int i = 0; i < atom1.nei_num; i++)
     {
-        energy = energy + LJ_potential(atom1.pos,atoms[atom1.nei_list[i]].pos);
+        energy = energy + LJ_potential(atom1.pos,atom1.nei_list[i]+1);
         for (int j = 0; j < 3; j++)
         {
-            force[j] =  force[j] + LJ_force(atom1.pos,atoms[atom1.nei_list[i]].pos)[j];
+            force[j] =  force[j] + LJ_force(atom1.pos,atom1.nei_list[i]+1)[j];
         }
-        
     }
     energy_force[0] = energy;
     for (int k =1; k < 4; k++)
