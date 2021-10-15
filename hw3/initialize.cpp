@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string.h>
+#include <stdlib.h>
 #include "initialize.h"
 #include "parameters.h"
 

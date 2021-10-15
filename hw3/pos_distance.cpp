@@ -1,6 +1,7 @@
 #include <math.h>
 #include <fstream>
 #include <string.h>
+#include <stdlib.h>
 #include "pos_distance.h"
 #include "parameters.h"
 

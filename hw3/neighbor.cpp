@@ -3,6 +3,7 @@
 #include <typeinfo>
 #include <string.h>
 #include <iomanip>
+#include <stdlib.h>
 #include <math.h>
 #include <vector>
 #include "pos_distance.h"
