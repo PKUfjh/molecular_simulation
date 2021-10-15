@@ -97,11 +97,6 @@ void set_neighlist(){
     for (int i = 0; i < natoms; i++)
     {   
         atoms[i].allocate();
-        double **a_list = new double *[neighbor_n];
-        for (int j = 0; j < neighbor_n; j++)
-        {
-            a_list[j] = new double [4];
-        }
         
         nlist[i] = 0;
         for (int j = 0; j < natoms; j++)
@@ -117,10 +112,10 @@ void set_neighlist(){
             // save all the atoms within the radius r_cut+extra_cut into neighbor list
             if (dist <= (r_cut + extra_cut)) 
             {
-                a_list[nlist[i]][0] = j;
+                atoms[i].nei_list[nlist[i]][0] = j;
                 for (int l = 0; l < 3; l++)
                 {
-                    a_list[nlist[i]][l+1] = mirror_info[l+1];
+                    atoms[i].nei_list[nlist[i]][l+1] = mirror_info[l+1];
                 }
                 
                 nlist[i]++;
@@ -130,7 +125,6 @@ void set_neighlist(){
             }
         }
         atoms[i].nei_num = nlist[i];
-        atoms[i].nei_list = a_list;
     }
 
 }

@@ -32,19 +32,8 @@ int main() {
     setatoms();  // setting the ID, index, position and velocity for each atom in *atoms
     set_neighlist();  // setting the neigh list for each atom in *atoms
 
-    outfile.open("energy.txt",ios::out);
-    double energy = 0;
-    for (int i = 0; i < natoms; i++)
-    {
-        // outfile << atoms[i].ID << "\t";
-        // outfile.precision(12);
-        // outfile << energy_force(atoms[i])[0] << endl;//output the energy of each atom
-        energy += energy_force(atoms[i])[0];
-    }
-    outfile.precision(12);
-    outfile <<"total energy: " << energy << endl; //output the total menergy
-    outfile.close();
     outfile.open("force.txt",ios::out);
+    double energy = 0;
     //output the total force of each atom
     for (int i = 0; i < natoms; i++)
     {
@@ -55,12 +44,22 @@ int main() {
         outfile << force[1] << "\t";
         outfile << force[2] << "\t";
         outfile << force[3] << endl;
+        energy += force[0];
     }
+    outfile.close();
+    outfile.open("energy.txt",ios::out);
+    outfile.precision(12);
+    outfile <<"total energy: " << energy << endl; //output the total menergy
     outfile.close();
 
     for (int j = 0; j < natoms; j++)
     {
+        for (int k = 0; k < neighbor_n; k++)
+        {
+            delete[] atoms[j].nei_list[k];
+        }
         delete[] atoms[j].nei_list;
     }
+    
     return 0;
 }

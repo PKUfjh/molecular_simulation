@@ -24,7 +24,13 @@ int main(){
             nei_list[i][j] = i + j;
         }
     }
+    for (int i = 0; i < neighbor_n; i++)
+    {
+        delete[] nei_list[i];
+    }
     
-    cout << nei_list[2][2] << endl;
+    delete[] nei_list;
+
+    cout << "ds" << endl;
     return 0;
 }
