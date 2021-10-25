@@ -7,11 +7,6 @@
 
 using namespace std;
 
-ifstream infile_v;
-
-//vector representing the lattice constant
-double vector_a[3][3] = {{0,0,0},{0,0,0},{0,0,0}};
-
 //compute the distance between two coordinates
 double single_distance(double alist[3],double blist[3]){
     double dis = 0;
@@ -23,46 +18,12 @@ double single_distance(double alist[3],double blist[3]){
     return dis;
 }
 
+
 //compute the distance between two coordinates under PBC
 double *pos_distance(double alist[3], double blist[3]){
     static double pos_distance[4];
-    char buf[1024];
-    infile_v.open("geo.in",ios::in);
-    const char *startline = "\%CELL_PARAMETER";
 
-    do
-    {
-        infile_v.getline(buf,sizeof(buf));
-    } while (strstr(buf,startline) == NULL); //read input file until the startline
-
-    for (int j = 0; j < 3; j++)
-    {
-        infile_v.getline(buf,sizeof(buf));
-        const char *d = " \t";
-        char *p= strtok(buf,d);
-        if (p == NULL)
-        {   
-            continue;
-        }
-        double A_num = atof(p);
-        vector_a[j][0] = A_num;
-        
-        int pos = 1;
-        do
-        {   
-        p = strtok(NULL,d);
-        if (p == NULL)
-        {
-            break;
-        }
-        A_num = atof(p);
-        vector_a[j][pos] = A_num;
-        pos ++;
-        }while(p);
-    }
-    infile_v.close();
-
-    double dis = 999999999;
+    double dis = 99999999999999999;
     //compute the minimum distane between one atom with the other atom and its mirror
     for (int i_1 = 0; i_1 < 3; i_1++){
         for (int i_2 = 0; i_2 < 3; i_2++)
@@ -83,7 +44,7 @@ double *pos_distance(double alist[3], double blist[3]){
                     for (int l = 0; l < 3;l++)
                     {
                         // pos_distance[l+1] = alist[l] - tem[l];
-                        pos_distance[l+1] = tem[l];
+                        pos_distance[l+1] = tem[l] - alist[l];
                     }
                     
                 }

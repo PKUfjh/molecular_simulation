@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string.h>
 #include <math.h>
+#include <time.h>
 #include "parameters.h"
 #include "initialize.h"
 #include "neighbor.h"
@@ -29,11 +30,14 @@ Atom *atoms = new Atom[900]: class array saving all the atoms information
 */
 
 int main() {
+    clock_t start = clock();
     initialize();// initialization of the global parameters
-    setatoms();  // setting the ID, index, position and velocity for each atom in *atoms
     set_neighlist();  // setting the neigh list for each atom in *atoms
     
-    mdrun(0);
+    mdrun(-1,0.1);
+    mdrun(0,0.1);
+    mdrun(1,0.1);
+    
     //release the memory allocated to nei_list
     for (int j = 0; j < natoms; j++)
     {
@@ -43,6 +47,9 @@ int main() {
         }
         delete[] atoms[j].nei_list;
     }
+    clock_t end = clock();
+    cout << CLOCKS_PER_SEC << endl;
+    cout <<"Running Time : "<<(double)(end - start)/ CLOCKS_PER_SEC << endl;
     
     return 0;
 }

@@ -30,11 +30,24 @@ void initialize(){
             p = strtok(NULL,d);
             natoms = atof(p);
         } 
+        else if (title == "mass")
+        {
+            p = strtok(NULL,d);
+            mass = atof(p);
+        }
+        
         else if (title == "geo_path")
         {
             p = strtok(NULL,d);
             geo_path = p;
-        }else if (title == "r_cut")
+        }
+        else if (title == "read_vel")
+        {
+            p = strtok(NULL,d);
+            read_vel = atof(p);
+        }
+        
+        else if (title == "r_cut")
         {
             p = strtok(NULL,d);
             r_cut = atof(p);
@@ -57,11 +70,45 @@ void initialize(){
         {
             p = strtok(NULL,d);
             sigma = atof(p);
-        } 
+        }
         else
         {
             continue;
         }
+    }
+    infile1.close();
+    infile1.open("geo.in",ios::in);
+    const char *startline = "\%CELL_PARAMETER";
+
+    do
+    {
+        infile1.getline(buf,sizeof(buf));
+    } while (strstr(buf,startline) == NULL); //read input file until the startline
+
+    for (int j = 0; j < 3; j++)
+    {
+        infile1.getline(buf,sizeof(buf));
+        const char *d = " \t";
+        char *p= strtok(buf,d);
+        if (p == NULL)
+        {   
+            continue;
+        }
+        double A_num = atof(p);
+        vector_a[j][0] = A_num;
+        
+        int pos = 1;
+        do
+        {   
+        p = strtok(NULL,d);
+        if (p == NULL)
+        {
+            break;
+        }
+        A_num = atof(p);
+        vector_a[j][pos] = A_num;
+        pos ++;
+        }while(p);
     }
     infile1.close();
 }
