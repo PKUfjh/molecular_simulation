@@ -30,11 +30,24 @@ void initialize(){
             p = strtok(NULL,d);
             natoms = atof(p);
         } 
+        else if (title == "mass")
+        {
+            p = strtok(NULL,d);
+            mass = atof(p);
+        }
+        
         else if (title == "geo_path")
         {
             p = strtok(NULL,d);
             geo_path = p;
-        }else if (title == "r_cut")
+        }
+        else if (title == "read_vel")
+        {
+            p = strtok(NULL,d);
+            read_vel = atof(p);
+        }
+        
+        else if (title == "r_cut")
         {
             p = strtok(NULL,d);
             r_cut = atof(p);
@@ -57,7 +70,7 @@ void initialize(){
         {
             p = strtok(NULL,d);
             sigma = atof(p);
-        } 
+        }
         else
         {
             continue;

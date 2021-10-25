@@ -1,10 +1,11 @@
 #include <iostream>
 #include <fstream>
 #include <string.h>
+#include <math.h>
 #include "parameters.h"
 #include "initialize.h"
 #include "neighbor.h"
-#include "force_energy.h"
+#include "mdrun.h"
 
 using namespace std;
 
@@ -31,27 +32,8 @@ int main() {
     initialize();// initialization of the global parameters
     setatoms();  // setting the ID, index, position and velocity for each atom in *atoms
     set_neighlist();  // setting the neigh list for each atom in *atoms
-
-    outfile.open("force.txt",ios::out);
-    double energy = 0;
-    //output the total force of each atom
-    for (int i = 0; i < natoms; i++)
-    {
-        double force[4];
-        memcpy(force,energy_force(atoms[i]),sizeof(force));
-        outfile << atoms[i].ID << "\t";
-        outfile.precision(12);
-        outfile << force[1] << "\t";
-        outfile << force[2] << "\t";
-        outfile << force[3] << endl; //output the forces of each atom
-        energy += force[0];
-    }
-    outfile.close();
-    outfile.open("energy.txt",ios::out);
-    outfile.precision(12);
-    outfile <<"total energy: " << energy << endl; //output the total menergy
-    outfile.close();
-
+    
+    mdrun(0);
     //release the memory allocated to nei_list
     for (int j = 0; j < natoms; j++)
     {

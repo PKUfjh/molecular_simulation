@@ -19,6 +19,8 @@ sigma: input parameters for L-J potential
 
 extern int natoms;extern int neighbor_n;extern double r_cut;extern double extra_cut;extern string geo_path;
 extern double epsilon;extern double sigma;
+extern double mass; extern int read_vel;
+extern double NA; extern double Bolzmann_k; extern double J_to_ev;
 
 /* global class of atoms, 
 saving ID, index, number of neigh atoms, neighbor list, position and velocity of the atoms */
