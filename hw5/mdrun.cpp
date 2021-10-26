@@ -132,13 +132,29 @@ void mdrun(int STEP,double delta_t){
         outfile.close();
     }
     else{
-        double pos1[natoms][3];
-        double pos2[natoms][3];
-        double force[natoms][3];
+        double **pos1;
+        pos1 = new double *[natoms];
+        for (int i = 0; i < natoms; i++)
+        {
+            pos1[i] = new double [3];
+        }
+        double **pos2;
+        pos2 = new double *[natoms];
+        for (int i = 0; i < natoms; i++)
+        {
+            pos1[i] = new double [3];
+        }
+        double **force;
+        force = new double *[natoms];
+        for (int i = 0; i < natoms; i++)
+        {
+            force[i] = new double [3];
+        }
+        
         
         string mark = "STEP "+to_string(STEP-1);
         const char *startline = mark.c_str();
-        memcpy(force,read_in("force.txt",startline),sizeof(force));
+        memcpy(force,read_in("force.txt",startline),natoms*3*sizeof(double));
         
         string mark1 = "STEP "+to_string(STEP-2);
         string mark2 = "STEP "+to_string(STEP-1);
@@ -146,19 +162,42 @@ void mdrun(int STEP,double delta_t){
         const char *pos2line = mark2.c_str();
         
         cout << read_in("force.txt",startline)[0][0] << endl;
-        memcpy(pos1,read_in("position.txt",pos1line),sizeof(pos1));
-        memcpy(pos2,read_in("position.txt",pos2line),sizeof(pos2));
+        memcpy(pos1,read_in("position.txt",pos1line),natoms*3*sizeof(double));
+        memcpy(pos2,read_in("position.txt",pos2line),natoms*3*sizeof(double));
 
         outfile.open("position.txt",ios::app);
         outfile << "STEP " << STEP << endl;
         for (int i = 0; i < natoms; i++)
-        {
+        {   
+            double poslist[3];
+            for (int k = 0; k < 3; k++)
+            {
+                poslist[k] = 2*pos2[i][k] - pos1[i][k] + force[i][k]/mass * pow(delta_t,2);
+            }
+            restrict_in_box(poslist);
+            atoms[i].setpos(poslist);
             outfile << atoms[i].ID << "\t";
             outfile.precision(12);
-            outfile << 2*pos2[i][0] - pos1[i][0] + force[i][0]/mass * pow(delta_t,2) << "\t";
-            outfile << 2*pos2[i][1] - pos1[i][1] + force[i][1]/mass * pow(delta_t,2) << "\t";
-            outfile << 2*pos2[i][2] - pos1[i][2] + force[i][2]/mass * pow(delta_t,2) << endl;
+            outfile << atoms[i].pos[0] << "\t" << atoms[i].pos[1] << "\t" << atoms[i].pos[2] << endl;
         }
+        
+        //release the memory allocated to nei_list
+        for (int j = 0; j < natoms; j++)
+        {
+            delete[] pos1[j];
+        }
+        delete[] pos1;
+        for (int j = 0; j < natoms; j++)
+        {
+            delete[] pos2[j];
+        }
+        delete[] pos2;
+        for (int j = 0; j < natoms; j++)
+        {
+            delete[] force[j];
+        }
+        delete[] force;
+
         outfile.close();
     }
 

@@ -23,9 +23,5 @@ void Atom::setvel(double velocity[3]){
 }
 
 void Atom::allocate(){
-    nei_list = new double *[neighbor_n];
-    for (int i = 0; i < neighbor_n; i++)
-    {
-        nei_list[i] = new double [4];
-    }
+    nei_list = new double [neighbor_n];
 }

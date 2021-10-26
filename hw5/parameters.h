@@ -40,7 +40,7 @@ public:
     string ID ;
     int index;
     int nei_num;
-    double **nei_list;
+    double *nei_list;
     double pos[3];
     double vel[3];
     // declare function

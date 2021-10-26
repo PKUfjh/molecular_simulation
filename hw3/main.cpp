@@ -29,31 +29,31 @@ Atom *atoms: class array saving all the atoms information
 */
 
 int main() {
+    clock_t start = clock();
     initialize(); // initialization of the global parameters
-    setatoms(); // setting the ID, index, position and velocity for each atom in *atoms
     set_neighlist(); // setting the neigh list for each atom in *atoms
-    cout << "number of neighbor atoms of #16 atom: " << atoms[16].nei_num << endl; //test for the number of neighbor atoms
+    cout << "number of neighbor atoms of #12 atom: " << atoms[11].nei_num << endl; //test for the number of neighbor atoms
     
     //write neighbor list for the #12 atom
-    outfile.open("geo16.out",ios::out);
+    outfile.open("geo12.out",ios::out);
     outfile << "neighbor list for #12 atom" << endl;
-    int index = 16;
+    int index = 11;
     outfile << "neighbor_number " << atoms[index].nei_num << endl;
-    outfile.close();
-    outfile.open("geo16.out",ios::app);
     for (int i = 0; i < atoms[index].nei_num; i++)
     {   
-    int neighbor_num = atoms[index].nei_list[i][0];
+    int neighbor_num = atoms[index].nei_list[i];
 
-    outfile << atoms[index].nei_list[i][0] << "\t";
+    outfile << neighbor_num << "\t";
     for (int j = 0; j < 3; j++)
     {   
         outfile.precision(15);
-        outfile << atoms[index].nei_list[i][j+1] << "\t";
+        outfile << atoms[neighbor_num].pos[j] << "\t";
     }
     outfile << "\n";
     }
     outfile.close();
+    clock_t end = clock();
+    cout <<"Running Time : "<<(double)(end - start)/ CLOCKS_PER_SEC << endl;
     
     
     return 0;

@@ -7,6 +7,7 @@
 #include "initialize.h"
 #include "neighbor.h"
 #include "mdrun.h"
+#include "force_energy.h"
 
 using namespace std;
 
@@ -34,17 +35,10 @@ int main() {
     initialize();// initialization of the global parameters
     set_neighlist();  // setting the neigh list for each atom in *atoms
     
-    mdrun(-1,0.1);
     mdrun(0,0.1);
-    mdrun(1,0.1);
-    
     //release the memory allocated to nei_list
     for (int j = 0; j < natoms; j++)
     {
-        for (int k = 0; k < neighbor_n; k++)
-        {
-            delete[] atoms[j].nei_list[k];
-        }
         delete[] atoms[j].nei_list;
     }
     clock_t end = clock();
