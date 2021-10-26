@@ -61,6 +61,12 @@ void initialize(){
             p = strtok(NULL,d);
             neighbor_n = atof(p);
         }
+        else if (title == "delta_t")
+        {
+            p = strtok(NULL,d);
+            delta_t = atof(p);
+        }
+        
         else if (title == "epsilon")
         {
             p = strtok(NULL,d);

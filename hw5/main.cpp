@@ -35,7 +35,8 @@ int main() {
     initialize();// initialization of the global parameters
     set_neighlist();  // setting the neigh list for each atom in *atoms
     
-    mdrun(0,0.1);
+    mdrun(0);
+    mdrun(1);
     //release the memory allocated to nei_list
     for (int j = 0; j < natoms; j++)
     {

@@ -27,6 +27,7 @@ extern int natoms;extern int neighbor_n;
 extern double r_cut;extern double extra_cut;extern string geo_path;
 extern double vector_a[3][3];
 extern double epsilon;extern double sigma;
+extern double delta_t;
 extern double mass; extern int read_vel;
 extern double NA; extern double Bolzmann_k; extern double J_to_ev;
 
