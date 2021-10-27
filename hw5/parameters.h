@@ -14,6 +14,7 @@ r_cut: cutoff radius for L-J potential
 extra_cut: extra cutoff radius for neighbor atom list
 geo_path: path for the input file 
 vector_a: vector representing the lattice constant
+T_0: initial temperature for random initialization of velocity
 epsilon: input parameters for L-J potential
 sigma: input parameters for L-J potential
 mass: atomic mass

@@ -5,6 +5,7 @@
 #include "parameters.h"
 #include "initialize.h"
 
+//compute the total kinetic energy
 double kin_energy()
 {
     double kin_energy = 0;
