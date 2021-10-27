@@ -1,9 +1,12 @@
 #include <iostream>
 #include <fstream>
+#include <time.h>
+#include <random>
 #include <string.h>
 #include <stdlib.h>
 #include "initialize.h"
 #include "parameters.h"
+#include "kin_energy.h"
 
 using namespace std;
 
@@ -46,7 +49,11 @@ void initialize(){
             p = strtok(NULL,d);
             read_vel = atof(p);
         }
-        
+        else if (title == "T_0")
+        {
+            p = strtok(NULL,d);
+            T_0 = atof(p);
+        }
         else if (title == "r_cut")
         {
             p = strtok(NULL,d);
@@ -93,6 +100,7 @@ void initialize(){
         infile1.getline(buf,sizeof(buf));
     } while (strstr(buf,startline) == NULL); //read input file until the startline
 
+    //initialization of lattice vectors from input file
     for (int j = 0; j < 3; j++)
     {
         infile1.getline(buf,sizeof(buf));
@@ -165,31 +173,77 @@ void initialize(){
         ind++;
     };
 
-    ind = 0;
-    while (infile1.getline(buf,sizeof(buf)))
+    //initialization of velocity for each atom
+    //read_vel 1: read from input
+    if (read_vel == 1)
     {   
-        double vellist[3];
-        const char *d = " \t";
-        char *p= strtok(buf,d);
-
-        int pos = 0;
-        do
+        ind = 0;
+        while (infile1.getline(buf,sizeof(buf)))
         {   
-        double A_num;
-        p = strtok(NULL,d);
+            double vellist[3];
+            const char *d = " \t";
+            char *p= strtok(buf,d);
 
-        if (p == NULL)
-        {
-            break;
+            int pos = 0;
+            do
+            {   
+            double A_num;
+            p = strtok(NULL,d);
+
+            if (p == NULL)
+            {
+                break;
+            }
+            A_num = atof(p);
+            vellist[pos] = A_num;
+            pos ++;
+            }while(p);
+            atoms[ind].setvel(vellist); //set velocity for each atom in the second loop
+            ind++;
+        };
+        infile1.close();
+    }
+    //read_vel 0: random initialization
+    else if (read_vel == 0)
+    {
+        infile1.close();
+        double kinetic_energy = 0;
+        double tot_mass = 0;
+        double center_vel[3] = {0};
+        double temperature;
+        double factor;
+        for (int i = 0; i < natoms; i++)
+        {   
+            default_random_engine e(time(0)+i);
+            uniform_real_distribution<double> u(-0.5,0.5);
+            for(int j = 0; j < 3; ++j)
+                atoms[i].vel[j] = u(e);
+            tot_mass += mass;
+            center_vel[0] += mass*atoms[i].vel[0];
+            center_vel[1] += mass*atoms[i].vel[1];
+            center_vel[2] += mass*atoms[i].vel[2];
         }
-        A_num = atof(p);
-        vellist[pos] = A_num;
-        pos ++;
-        }while(p);
-        atoms[ind].setvel(vellist); //set velocity for each atom in the second loop
-        ind++;
-    };
-    infile1.close();
+        center_vel[0] = center_vel[0]/tot_mass;
+        center_vel[1] = center_vel[1]/tot_mass;
+        center_vel[2] = center_vel[2]/tot_mass;
+        for (int j = 0; j < natoms; j++)
+        {
+            atoms[j].vel[0] = atoms[j].vel[0] - center_vel[0];
+            atoms[j].vel[1] = atoms[j].vel[1] - center_vel[1];
+            atoms[j].vel[2] = atoms[j].vel[2] - center_vel[2];
+            kinetic_energy += 0.5*mass*(pow(atoms[j].vel[0],2)+pow(atoms[j].vel[1],2)+pow(atoms[j].vel[2],2));
+        }
+        kinetic_energy = kinetic_energy/NA*J_to_ev*10;
+        temperature = kinetic_energy*2/(3*Bolzmann_k*natoms*J_to_ev);
+        factor = T_0/temperature;
+        for (int j = 0; j < natoms; j++)
+        {
+            atoms[j].vel[0] = sqrt(factor)*atoms[j].vel[0];
+            atoms[j].vel[1] = sqrt(factor)*atoms[j].vel[1];
+            atoms[j].vel[2] = sqrt(factor)*atoms[j].vel[2];
+        }
+    }
+    
     //initialization of neighbor number for each atom
     for (int i = 0; i < natoms; i++)
     {

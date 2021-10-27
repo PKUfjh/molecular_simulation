@@ -32,18 +32,17 @@ Atom *atoms = new Atom[900]: class array saving all the atoms information
 
 int main() {
     clock_t start = clock();
-    initialize();// initialization of the global parameters
-    set_neighlist();  // setting the neigh list for each atom in *atoms
+    initialize();// initialization of the global parameters, position and velocity of atoms
+    set_neighlist();  // setting the neighbot list for each atom
     
-    mdrun(0);
-    mdrun(1);
+    mdrun(0); //run molecular dynamics, output the step 0 information
+    
     //release the memory allocated to nei_list
     for (int j = 0; j < natoms; j++)
     {
         delete[] atoms[j].nei_list;
     }
     clock_t end = clock();
-    cout << CLOCKS_PER_SEC << endl;
     cout <<"Running Time : "<<(double)(end - start)/ CLOCKS_PER_SEC << endl;
     
     return 0;

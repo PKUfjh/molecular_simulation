@@ -1,4 +1,6 @@
 #include <iostream>
+#include <time.h>
+#include<random>
 #include <fstream>
 #include <math.h>
 #include "pos_distance.h"
@@ -8,12 +10,15 @@ using namespace std;
 
 
 int main(){
-    double r1 = 32.6620979507 - -8.96402092864*0.1;
-    double r2 = 32.6620979507;
-    double f = 0.0146230270325;
-    double m = 4.0026;
-    double r3 = 2*r2 - r1 + f/m * 0.01;
-    cout << r1 << endl;
-    cout << r3 << endl;
+    for (int i = 0; i < 2; i++)
+    {
+        default_random_engine e(time(0));
+        uniform_real_distribution<double> u(-1.2,3.5);
+        for(int i = 0; i < 2; ++i)
+		cout << u(e) << endl;
+    }
+    
+    
+;
     return 0;
 }
