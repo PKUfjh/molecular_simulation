@@ -214,10 +214,9 @@ void initialize(){
         double factor;
         for (int i = 0; i < natoms; i++)
         {   
-            default_random_engine e(time(0)+i);
-            uniform_real_distribution<double> u(-0.5,0.5);
+            srand(time(NULL)+i);
             for(int j = 0; j < 3; ++j)
-                atoms[i].vel[j] = u(e);
+                atoms[i].vel[j] = (rand()%100)*0.01 - 0.50;
             tot_mass += mass;
             center_vel[0] += mass*atoms[i].vel[0];
             center_vel[1] += mass*atoms[i].vel[1];
