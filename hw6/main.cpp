@@ -42,7 +42,7 @@ int main() {
     for (int i = 0; i < atoms[index].nei_num; i++)
     {   
     int neighbor_num = atoms[index].nei_list[i];
-
+    
     outfile << neighbor_num << "\t";
     for (int j = 0; j < 3; j++)
     {   
@@ -52,8 +52,20 @@ int main() {
     outfile << "\n";
     }
     outfile.close();
+
+     //release the memory allocated to nei_list
+    for (int j = 0; j < natoms; j++)
+    {
+        delete[] atoms[j].nei_list;
+    }
+
+    delete[] atoms;
     clock_t end = clock();
-    cout <<"Running Time : "<<(double)(end - start)/ CLOCKS_PER_SEC << endl;
+    outfile.open("running time for " + geo_path,ios::out);
+    outfile <<"Running Time : "<<(double)(end - start)/ CLOCKS_PER_SEC << "s" << endl;
+    outfile << "CPU: Intel(R)_Core(TM)_i7-10700_CPU_@_2.90GHz" << endl;
+    outfile << "CPU core number: 1";
+    outfile.close(); 
     
     
     return 0;

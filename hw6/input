@@ -1,7 +1,7 @@
 id He
-natoms 864
+natoms 10976 %108000
 
-geo_path geo.in
+geo_path geo2.in
 
 r_cut 8.5 %rcut for L-J potential
 extra_cut 2 %extra distance for neighbor list

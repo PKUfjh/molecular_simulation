@@ -77,7 +77,10 @@ void initialize(){
         }
     }
     infile1.close();
-    infile1.open("geo.in",ios::in);
+
+    //allocate memory to atoms class
+    atoms = new Atom [natoms];
+    infile1.open(geo_path,ios::in);
     const char *startline = "\%CELL_PARAMETER";
     const char *positionline = "\%ATOMIC_POSTION";
     const char *velocityline = "\%ATOMIC_VELOCITY";

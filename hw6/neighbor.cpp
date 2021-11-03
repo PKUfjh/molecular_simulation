@@ -19,6 +19,7 @@ void set_neighlist(){
     
     for (int i = 0; i < natoms; i++)
     {   
+        
         for (int j = i+1; j < natoms; j++)
         {   
             double dist = shortest(atoms[i].pos,atoms[j].pos);
