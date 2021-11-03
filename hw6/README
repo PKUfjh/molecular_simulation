@@ -1,4 +1,0 @@
-please run code as:
-g++ -std=c++11 *.cpp -o main
-then:
-./main

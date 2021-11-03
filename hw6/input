@@ -1,5 +1,5 @@
 id He
-natoms 10976 %108000
+natoms 10976 %geo2.in: 10976, geo3.in: 108000
 
 geo_path geo2.in
 
