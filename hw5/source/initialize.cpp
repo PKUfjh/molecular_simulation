@@ -15,7 +15,7 @@ ifstream infile1;
 
 // initialization of the global parameters, position and velocity of atoms
 void initialize(){
-    infile1.open("input",ios::in);
+    infile1.open("../input",ios::in);
     char buf[1024];
 
     while (infile1.getline(buf,sizeof(buf)))
@@ -91,7 +91,7 @@ void initialize(){
         }
     }
     infile1.close();
-    infile1.open("geo.in",ios::in);
+    infile1.open(geo_path,ios::in);
     const char *startline = "\%CELL_PARAMETER";
     const char *positionline = "\%ATOMIC_POSTION";
     const char *velocityline = "\%ATOMIC_VELOCITY";

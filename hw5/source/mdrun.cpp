@@ -21,7 +21,7 @@ void mdrun(int STEP){
         double kinetic_energy = 0;
         double pot_energy = 0;
         double temperature = 0;
-        outfile.open("position.txt",ios::out);
+        outfile.open("../position.txt",ios::out);
         outfile << "STEP 0" << endl;
         for (int i = 0; i < natoms; i++)
         {
@@ -30,7 +30,7 @@ void mdrun(int STEP){
             outfile << atoms[i].pos[0] << "\t" << atoms[i].pos[1] << "\t" << atoms[i].pos[2] << endl;
         }
         outfile.close();
-        outfile.open("velocity.txt",ios::out);
+        outfile.open("../velocity.txt",ios::out);
         outfile << "STEP 0" << endl;
         for (int i = 0; i < natoms; i++)
         {
@@ -39,7 +39,7 @@ void mdrun(int STEP){
             outfile << atoms[i].vel[0] << "\t" << atoms[i].vel[1] << "\t" << atoms[i].vel[2] << endl;
         }
         outfile.close();
-        outfile.open("force.txt",ios::out);
+        outfile.open("../force.txt",ios::out);
         outfile << "STEP 0" << endl;
         //output the total force of each atom
         for (int i = 0; i < natoms; i++)
@@ -55,7 +55,7 @@ void mdrun(int STEP){
         kinetic_energy = kin_energy();
         total_energy = pot_energy + kinetic_energy;
         temperature = kinetic_energy*2/(3*Bolzmann_k*natoms*J_to_ev);
-        outfile.open("run.log",ios::out);
+        outfile.open("../run.log",ios::out);
         outfile.precision(12);\
         outfile << "STEP 0" << endl;
         outfile <<"total kinetic energy(eV): " << kinetic_energy << endl; //output the total potential energy
@@ -88,11 +88,11 @@ void mdrun(int STEP){
             force[i] = new double [3];
         }
         
-        memcpy(force,read_in("force.txt",STEP-1),natoms*3*sizeof(double));
-        memcpy(pos1,read_in("position.txt",STEP-2),natoms*3*sizeof(double));
-        memcpy(pos2,read_in("position.txt",STEP-1),natoms*3*sizeof(double));
+        memcpy(force,read_in("../force.txt",STEP-1),natoms*3*sizeof(double));
+        memcpy(pos1,read_in("../position.txt",STEP-2),natoms*3*sizeof(double));
+        memcpy(pos2,read_in("../position.txt",STEP-1),natoms*3*sizeof(double));
 
-        outfile.open("position.txt",ios::app);
+        outfile.open("../position.txt",ios::app);
         outfile << "STEP " << STEP << endl;
         for (int i = 0; i < natoms; i++)
         {   
@@ -110,7 +110,7 @@ void mdrun(int STEP){
         }
         outfile.close();
 
-        outfile.open("velocity.txt",ios::app);
+        outfile.open("../velocity.txt",ios::app);
         outfile << "STEP " << STEP << endl;
         for (int i = 0; i < natoms; i++)
         {
@@ -120,7 +120,7 @@ void mdrun(int STEP){
         }
         outfile.close();
 
-        outfile.open("force.txt",ios::app);
+        outfile.open("../force.txt",ios::app);
         outfile << "STEP " << STEP << endl;
         //output the total force of each atom
         for (int i = 0; i < natoms; i++)
@@ -137,7 +137,7 @@ void mdrun(int STEP){
         kinetic_energy = kin_energy();
         total_energy = pot_energy + kinetic_energy;
         temperature = kinetic_energy*2/(3*Bolzmann_k*natoms*J_to_ev);
-        outfile.open("run.log",ios::app);
+        outfile.open("../run.log",ios::app);
         outfile.precision(12);\
         outfile << "STEP " << STEP << endl;
         outfile <<"total kinetic energy(eV): " << kinetic_energy << endl; //output the total potential energy
