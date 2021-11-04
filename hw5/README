@@ -1,3 +1,9 @@
+how to compile and run:
+cd source
+make
+cd ../bin
+./main
+
 modify read_vel in input file to determine how to set initial velocity
 read_vel:1  read from input file
 read_vel:0  using random number to initilize velocity
