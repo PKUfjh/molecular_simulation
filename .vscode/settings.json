@@ -6,5 +6,6 @@
         "iosfwd": "cpp",
         "ostream": "cpp",
         "istream": "cpp"
-    }
+    },
+    "cmake.configureOnOpen": false
 }
