@@ -1,3 +1,0 @@
-/home/jiahao-ubuntu/molecular_simulation/hw5/build/CMakeFiles/rebuild_cache.dir
-/home/jiahao-ubuntu/molecular_simulation/hw5/build/CMakeFiles/edit_cache.dir
-/home/jiahao-ubuntu/molecular_simulation/hw5/build/CMakeFiles/main.dir
