@@ -12,9 +12,11 @@ using namespace std;
 
 // set neighbor list for each atom in the model in class Atom
 void set_neighlist(){
-    for (int i = 0; i < natoms; i++)
+    //initilize neighbor list for each atom
+    for (int j = 0; j < natoms; j++)
     {
-        atoms[i].allocate(); //allocate the memory to the 2D array nei_list
+        atoms[j].nei_num = 0;
+        atoms[j].nei_list[natoms] = {0};
     }
     
     for (int i = 0; i < natoms; i++)

@@ -11,11 +11,10 @@ using namespace std;
 
 
 int main(){
-    float num;
-    srand(time(NULL));
-    num = (rand()%100)*0.01 - 0.50;
-    /*这里可以控制精度,应该能看懂吧,这里是两位精度,如果你想精确到0.001,可以写成num = (rand()%1000)*0.001;*/
-    cout<<"The number is: "<<num<<endl;
+    int a = 7;
+    int b = 5;
+    cout <<  a%b << endl;
+    
     
     return 0;
 }

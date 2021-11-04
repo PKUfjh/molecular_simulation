@@ -40,9 +40,17 @@ Atom *atoms = new Atom[900]: class array saving all the atoms information
 int main() {
     clock_t start = clock();
     initialize();// initialization of the global parameters, position and velocity of atoms
-    set_neighlist();  // setting the neighbot list for each atom
     
-    mdrun(0); //run molecular dynamics, output the step 0 information
+    //run molecular dynamics
+    for (int i = 0; i < 100; i++)
+    {
+        if (i%neighbor_step == 0)
+        {
+            set_neighlist(); //searching neighbor list for every atom every 5 steps
+        }
+        mdrun(i);
+    }
+    
     
     //release the memory allocated to nei_list
     for (int j = 0; j < natoms; j++)

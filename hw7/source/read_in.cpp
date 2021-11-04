@@ -4,6 +4,7 @@
 #include <fstream>
 #include <istream>
 #include <stdlib.h>
+#include <math.h>
 
 using namespace std;
 
@@ -14,17 +15,6 @@ double **read_in(string filename,int STEP){
         list[i] = new double [3];
     }
 
-    if (STEP == -1)
-    {
-        for (int i = 0; i < natoms; i++)
-        {
-            for (int j = 0; j < 3; j++)
-            {
-                list[i][j] = atoms[i].pos[j] - atoms[i].vel[j]*delta_t;
-            }
-        }
-        return list;
-    }
     ifstream infile;
     infile.open(filename,ios::in);
 

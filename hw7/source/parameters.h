@@ -30,6 +30,7 @@ extern double vector_a[3][3];
 extern double T_0;
 extern double epsilon;extern double sigma;
 extern double delta_t;
+extern int neighbor_step;
 extern double mass; extern int read_vel;
 extern double NA; extern double Bolzmann_k; extern double J_to_ev;
 

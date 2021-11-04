@@ -39,7 +39,11 @@ void initialize(){
             p = strtok(NULL,d);
             mass = atof(p);
         }
-        
+        else if (title == "neighbor_step")
+        {
+            p = strtok(NULL,d);
+            neighbor_step = atof(p);
+        }
         else if (title == "geo_path")
         {
             p = strtok(NULL,d);
@@ -245,11 +249,10 @@ void initialize(){
             atoms[j].vel[2] = sqrt(factor)*atoms[j].vel[2];
         }
     }
-    
-    //initialization of neighbor number for each atom
+
     for (int i = 0; i < natoms; i++)
     {
-        atoms[i].nei_num = 0;
+        atoms[i].allocate(); //allocate the memory to the nei_list
     }
     
 }

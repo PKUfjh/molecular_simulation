@@ -69,6 +69,7 @@ void mdrun(int STEP){
         double kinetic_energy = 0;
         double pot_energy = 0;
         double temperature = 0;
+
         double **pos1;
         pos1 = new double *[natoms];
         for (int i = 0; i < natoms; i++)
@@ -87,29 +88,56 @@ void mdrun(int STEP){
         {
             force[i] = new double [3];
         }
-        
         memcpy(force,read_in("../force.txt",STEP-1),natoms*3*sizeof(double));
-        memcpy(pos1,read_in("../position.txt",STEP-2),natoms*3*sizeof(double));
-        memcpy(pos2,read_in("../position.txt",STEP-1),natoms*3*sizeof(double));
-
-        outfile.open("../position.txt",ios::app);
-        outfile << "STEP " << STEP << endl;
-        for (int i = 0; i < natoms; i++)
-        {   
-            double poslist[3];
-            for (int k = 0; k < 3; k++)
-            {
-                poslist[k] = 2*pos2[i][k] - pos1[i][k] + force[i][k]/mass * pow(delta_t,2);
-                atoms[i].vel[k] = (poslist[k] - pos1[i][k])/(2*delta_t);
+        if (STEP == 1)
+        {
+            outfile.open("../position.txt",ios::app);
+            outfile << "STEP " << STEP << endl;
+            for (int i = 0; i < natoms; i++)
+            {   
+                double poslist[3];
+                for (int k = 0; k < 3; k++)
+                {
+                    poslist[k] = atoms[i].pos[k] + atoms[i].vel[k] * delta_t + 1/2 * (force[i][k]*NA*0.1)/(mass*J_to_ev) * pow(delta_t,2);
+                }
+                restrict_in_box(poslist);
+                for (int k = 0; k < 3; k++)
+                {
+                    atoms[i].vel[k] = shortest(poslist,atoms[i].pos)[k+1]/delta_t + 1/2 *  (force[i][k]*NA*0.1)/(mass*J_to_ev) * delta_t;
+                }
+                atoms[i].setpos(poslist);
+                outfile << atoms[i].ID << "\t";
+                outfile.precision(12);
+                outfile << atoms[i].pos[0] << "\t" << atoms[i].pos[1] << "\t" << atoms[i].pos[2] << endl;
             }
-            restrict_in_box(poslist);
-            atoms[i].setpos(poslist);
-            outfile << atoms[i].ID << "\t";
-            outfile.precision(12);
-            outfile << atoms[i].pos[0] << "\t" << atoms[i].pos[1] << "\t" << atoms[i].pos[2] << endl;
+            outfile.close();
         }
-        outfile.close();
+        else{
+            memcpy(pos1,read_in("../position.txt",STEP-2),natoms*3*sizeof(double));
+            memcpy(pos2,read_in("../position.txt",STEP-1),natoms*3*sizeof(double));
 
+            outfile.open("../position.txt",ios::app);
+            outfile << "STEP " << STEP << endl;
+            for (int i = 0; i < natoms; i++)
+            {   
+                double poslist[3];
+                for (int k = 0; k < 3; k++)
+                {
+                    poslist[k] = 2*pos2[i][k] - pos1[i][k] +  (force[i][k]*NA*0.1)/(mass*J_to_ev) * pow(delta_t,2);
+                }
+                restrict_in_box(poslist);
+                for (int k = 0; k < 3; k++)
+                {
+                    atoms[i].vel[k] = shortest(poslist,atoms[i].pos)[k+1]/delta_t + 1/2 *  (force[i][k]*NA*0.1)/(mass*J_to_ev) * delta_t;
+                }
+                atoms[i].setpos(poslist);
+                outfile << atoms[i].ID << "\t";
+                outfile.precision(12);
+                outfile << atoms[i].pos[0] << "\t" << atoms[i].pos[1] << "\t" << atoms[i].pos[2] << endl;
+            }
+            outfile.close();
+        }
+            
         outfile.open("../velocity.txt",ios::app);
         outfile << "STEP " << STEP << endl;
         for (int i = 0; i < natoms; i++)
@@ -146,8 +174,7 @@ void mdrun(int STEP){
         outfile <<"Temperature (K): " << temperature << endl;
         outfile.close();
 
-        
-        //release the memory allocated to nei_list
+        //release the memory allocated to pos1,pos2,force
         for (int j = 0; j < natoms; j++)
         {
             delete[] pos1[j];
@@ -165,7 +192,6 @@ void mdrun(int STEP){
         delete[] force;
 
         outfile.close();
-    }
 
-
+    } 
 }
