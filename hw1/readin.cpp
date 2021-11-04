@@ -2,14 +2,20 @@
 #include <fstream>
 #include <typeinfo>
 #include <string.h>
+#include <unistd.h>
 
 using namespace std;
 
-int main() {
 
+int main() {
     ifstream infile;
     ofstream outfile;
-    infile.open("geo.in",ios::in);
+    infile.open("../geo.in",ios::in);
+    char buff[250];
+    getcwd(buff,250);
+    string cwd(buff);
+
+    cout << "working direactory" << cwd << endl;
 
     const char *startline = "\%ATOMIC_POSTION";
     const char *middleline = "\%ATOMIC_VELOCITY";
@@ -22,14 +28,14 @@ int main() {
     } while (strstr(buf,startline) == NULL);
     
 
-    outfile.open("geo.out",ios::out);
+    outfile.open("../geo.out",ios::out);
     outfile << buf << " in Bohr units" << endl;
     outfile.close();
 
 
     while (infile.getline(buf,sizeof(buf)))
     {
-        outfile.open("geo.out",ios::app);
+        outfile.open("../geo.out",ios::app);
         if (strstr(buf,middleline) != NULL)
         {
             outfile << "\n";
