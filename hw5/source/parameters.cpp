@@ -13,7 +13,7 @@ double mass = 0; int read_vel = 0;
 double NA = 6.02214086e23; double Bolzmann_k = 1.38064852e-23;double J_to_ev = 6.24150974e18;
 
 
-Atom *atoms = new Atom [1024];
+Atom *atoms;
 
 //set position and velocity array for the Atom class
 void Atom::setpos(double position[3]){

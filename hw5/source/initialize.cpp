@@ -91,6 +91,8 @@ void initialize(){
         }
     }
     infile1.close();
+
+    atoms = new Atom [natoms];
     infile1.open(geo_path,ios::in);
     const char *startline = "\%CELL_PARAMETER";
     const char *positionline = "\%ATOMIC_POSTION";
