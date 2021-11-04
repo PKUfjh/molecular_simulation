@@ -1,5 +1,7 @@
 how to compile and run:
-cd source
+mkdir build
+cd build
+cmake ..
 make
 cd ../bin
 ./main
