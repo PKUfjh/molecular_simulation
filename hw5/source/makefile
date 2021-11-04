@@ -4,7 +4,7 @@ OBJS = main.o initialize.o force_energy.o kin_energy.o mdrun.o neighbor.o parame
 TARGET = main
 CXX = g++
 INCL=-I${cwd}/source
-.cpp.o:
+%.o:%.cpp
 	${CXX} -std=c++11 ${INCL} -c $<
 ${TARGET}:${OBJS}
 	${CXX} -o $@ $?
