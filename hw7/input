@@ -10,6 +10,7 @@ extra_cut 2 %extra distance for neighbor list
 neighbor_n 300 % maximum number of neighbor atoms
 delta_t 0.01 %MD simulation time step
 neighbor_step 5 %number of steps to renew the neighbor lists
+output_step 2 %number of steps to output the MD info
 
 epsilon 0.01032
 sigma 3.405

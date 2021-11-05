@@ -5,8 +5,9 @@
     "cmath": "cpp",
     "iosfwd": "cpp",
     "ostream": "cpp",
-    "istream": "cpp"
-  },
+    "istream": "cpp",
+    "fstream": "cpp"
+},
   "cmake.configureOnOpen": false,
   "C_Cpp_Runner.cCompilerPath": "/usr/bin/clang",
   "C_Cpp_Runner.cppCompilerPath": "/usr/bin/clang++",

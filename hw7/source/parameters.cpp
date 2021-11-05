@@ -9,6 +9,10 @@ double epsilon = 0.0;double sigma = 0.0;
 double delta_t = 0.0;
 double T_0 = 0;
 double vector_a[3][3] = {{0,0,0},{0,0,0},{0,0,0}};
+double **pre1_pos;
+double **pre2_pos;
+double **pre1_force;
+
 double mass = 0; int read_vel = 0;
 int neighbor_step = 0;
 double NA = 6.02214086e23; double Bolzmann_k = 1.38064852e-23;double J_to_ev = 6.24150974e18;

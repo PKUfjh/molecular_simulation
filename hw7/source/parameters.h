@@ -28,6 +28,10 @@ extern int natoms;extern int neighbor_n;
 extern double r_cut;extern double extra_cut;extern string geo_path;
 extern double vector_a[3][3];
 extern double T_0;
+extern double **pre1_pos;
+extern double **pre2_pos;
+extern double **pre1_force;
+
 extern double epsilon;extern double sigma;
 extern double delta_t;
 extern int neighbor_step;

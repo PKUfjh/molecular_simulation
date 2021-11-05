@@ -16,7 +16,6 @@ void set_neighlist(){
     for (int j = 0; j < natoms; j++)
     {
         atoms[j].nei_num = 0;
-        atoms[j].nei_list[natoms] = {0};
     }
     
     for (int i = 0; i < natoms; i++)
