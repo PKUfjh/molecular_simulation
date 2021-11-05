@@ -14,37 +14,19 @@ void mdrun(int STEP){
     ifstream infile;
     fstream inoutfile;
     
+    double total_energy = 0;
+    double kinetic_energy = 0;
+    double pot_energy = 0;
+    double temperature = 0;
     if (STEP == 0)
     {
-        double total_energy = 0;
-        double kinetic_energy = 0;
-        double pot_energy = 0;
-        double temperature = 0;
-        outfile.open("../position.txt",ios::out);
-        outfile << "STEP 0" << endl;
         for (int i = 0; i < natoms; i++)
         {
             for (int k = 0; k < 3; k++)
             {
                 pre1_pos[i][k] = atoms[i].pos[k];
             }
-            outfile << atoms[i].ID << "\t";
-            outfile.precision(12);
-            outfile << atoms[i].pos[0] << "\t" << atoms[i].pos[1] << "\t" << atoms[i].pos[2] << endl;
         }
-        outfile.close();
-        outfile.open("../velocity.txt",ios::out);
-        outfile << "STEP 0" << endl;
-        for (int i = 0; i < natoms; i++)
-        {
-            outfile << atoms[i].ID << "\t";
-            outfile.precision(12);
-            outfile << atoms[i].vel[0] << "\t" << atoms[i].vel[1] << "\t" << atoms[i].vel[2] << endl;
-        }
-        outfile.close();
-        outfile.open("../force.txt",ios::out);
-        outfile << "STEP 0" << endl;
-        //output the total force of each atom
         for (int i = 0; i < natoms; i++)
         {
             double force[4];
@@ -53,34 +35,15 @@ void mdrun(int STEP){
             {
                 pre1_force[i][k] = force[k+1];
             }
-            outfile << atoms[i].ID << "\t";
-            outfile.precision(12);
-            outfile << force[1] << "\t" << force[2] << "\t" << force[3] << endl; //output the forces of each atom
             pot_energy += force[0];
         }
-        outfile.close();
         kinetic_energy = kin_energy();
         total_energy = pot_energy + kinetic_energy;
         temperature = kinetic_energy*2/(3*Bolzmann_k*natoms*J_to_ev);
-        outfile.open("../run.log",ios::out);
-        outfile.precision(12);\
-        outfile << "STEP 0" << endl;
-        outfile <<"total kinetic energy(eV): " << kinetic_energy << endl; //output the total potential energy
-        outfile <<"total potential energy(eV): " << pot_energy << endl; //output the total potential energy
-        outfile <<"total energy(eV): " << total_energy << endl;
-        outfile <<"Temperature (K): " << temperature << endl;
-        outfile.close();
     }
     else{
-        double total_energy = 0;
-        double kinetic_energy = 0;
-        double pot_energy = 0;
-        double temperature = 0;
-
         if (STEP == 1)
         {
-            outfile.open("../position.txt",ios::app);
-            outfile << "STEP " << STEP << endl;
             for (int i = 0; i < natoms; i++)
             {   
                 double poslist[3];
@@ -90,15 +53,9 @@ void mdrun(int STEP){
                 }
                 restrict_in_box(poslist);
                 atoms[i].setpos(poslist);
-                outfile << atoms[i].ID << "\t";
-                outfile.precision(12);
-                outfile << atoms[i].pos[0] << "\t" << atoms[i].pos[1] << "\t" << atoms[i].pos[2] << endl;
             }
-            outfile.close();
         }
         else{
-            outfile.open("../position.txt",ios::app);
-            outfile << "STEP " << STEP << endl;
             for (int i = 0; i < natoms; i++)
             {   
                 double poslist[3];
@@ -108,16 +65,9 @@ void mdrun(int STEP){
                 }
                 restrict_in_box(poslist);
                 atoms[i].setpos(poslist);
-                outfile << atoms[i].ID << "\t";
-                outfile.precision(12);
-                outfile << atoms[i].pos[0] << "\t" << atoms[i].pos[1] << "\t" << atoms[i].pos[2] << endl;
             }
-            outfile.close();
         }
         
-        outfile.open("../force.txt",ios::app);
-        outfile << "STEP " << STEP << endl;
-        //output the total force of each atom
         for (int i = 0; i < natoms; i++)
         {
             double force[4];
@@ -126,15 +76,10 @@ void mdrun(int STEP){
             {
                 pre1_force[i][k] = force[k+1];
             }
-            outfile << atoms[i].ID << "\t";
-            outfile.precision(12);
-            outfile << force[1] << "\t" << force[2] << "\t" << force[3] << endl; //output the forces of each atom
             pot_energy += force[0];
         }
-        outfile.close();
 
-        outfile.open("../velocity.txt",ios::app);
-        outfile << "STEP " << STEP << endl;
+
         for (int i = 0; i < natoms; i++)
         {
             for (int k = 0; k < 3; k++)
@@ -146,25 +91,76 @@ void mdrun(int STEP){
                 pre2_pos[i][k] = pre1_pos[i][k];
                 pre1_pos[i][k] = atoms[i].pos[k];
             }
-            outfile << atoms[i].ID << "\t";
-            outfile.precision(12);
-            outfile << atoms[i].vel[0] << "\t" << atoms[i].vel[1] << "\t" << atoms[i].vel[2] << endl;
         }
-        outfile.close();
-
-        
         kinetic_energy = kin_energy();
         total_energy = pot_energy + kinetic_energy;
         temperature = kinetic_energy*2/(3*Bolzmann_k*natoms*J_to_ev);
-        outfile.open("../run.log",ios::app);
-        outfile.precision(12);\
+    }
+    //output MD run information for every 2 steps
+    if (STEP % output_step == 0)
+    {   
+        string mode;
+        if (STEP == 0)
+        {
+            outfile.open("../position.txt",ios::out);
+        }
+        else{
+            outfile.open("../position.txt",ios::app);
+        }
+        outfile << "STEP " << STEP << endl;
+        for (int i = 0; i < natoms; i++)
+        {
+            outfile << atoms[i].ID << "\t";
+            outfile.precision(12);
+            outfile << atoms[i].pos[0] << "\t" << atoms[i].pos[1] << "\t" << atoms[i].pos[2] << endl;
+        }
+        outfile.close();
+
+        if (STEP == 0)
+        {
+            outfile.open("../velocity.txt",ios::out);
+        }
+        else{
+            outfile.open("../velocity.txt",ios::app);
+        }
+        outfile << "STEP " << STEP << endl;
+        for (int i = 0; i < natoms; i++)
+        {
+        outfile << atoms[i].ID << "\t";
+        outfile.precision(12);
+        outfile << atoms[i].vel[0] << "\t" << atoms[i].vel[1] << "\t" << atoms[i].vel[2] << endl;
+        }
+        outfile.close();
+        
+        if (STEP == 0)
+        {
+            outfile.open("../force.txt",ios::out);
+        }
+        else{
+            outfile.open("../force.txt",ios::app);
+        }
+        outfile << "STEP " << STEP << endl;
+        for (int i = 0; i < natoms; i++)
+        {
+        outfile << atoms[i].ID << "\t";
+        outfile.precision(12);
+        outfile << pre1_force[i][0] << "\t" << pre1_force[i][1] << "\t" << pre1_force[i][2] << endl; //output the forces of each atom
+        }
+        outfile.close();
+        
+        if (STEP == 0)
+        {
+            outfile.open("../run.log",ios::out);
+        }
+        else{
+            outfile.open("../run.log",ios::app);
+        }
+        outfile.precision(12);
         outfile << "STEP " << STEP << endl;
         outfile <<"total kinetic energy(eV): " << kinetic_energy << endl; //output the total potential energy
         outfile <<"total potential energy(eV): " << pot_energy << endl; //output the total potential energy
         outfile <<"total energy(eV): " << total_energy << endl;
         outfile <<"Temperature (K): " << temperature << endl;
         outfile.close();
-
-
     } 
 }

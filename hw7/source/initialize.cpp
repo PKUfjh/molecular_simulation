@@ -37,10 +37,6 @@ void initialize(){
         {
             p = strtok(NULL,d);mass = atof(p);
         }
-        else if (title == "neighbor_step")
-        {
-            p = strtok(NULL,d);neighbor_step = atof(p);
-        }
         else if (title == "geo_path")
         {
             p = strtok(NULL,d);geo_path = p;
@@ -68,7 +64,14 @@ void initialize(){
         {
             p = strtok(NULL,d);delta_t = atof(p);
         }
-        
+        else if (title == "neighbor_step")
+        {
+            p = strtok(NULL,d);neighbor_step = atof(p);
+        }
+        else if (title == "output_step")
+        {
+            p = strtok(NULL,d);output_step = atof(p);
+        }
         else if (title == "epsilon")
         {
             p = strtok(NULL,d);epsilon = atof(p);
