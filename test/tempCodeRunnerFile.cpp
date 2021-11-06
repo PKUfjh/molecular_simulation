@@ -1,0 +1,1 @@
++ 1/2 * (f0*NA*0.1)/(mass*J_to_ev) * pow(delta_t,2)
