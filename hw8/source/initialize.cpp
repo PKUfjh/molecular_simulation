@@ -72,6 +72,10 @@ void initialize(){
         {
             p = strtok(NULL,d);output_step = atof(p);
         }
+        else if (title == "MD_alg")
+        {
+            p = strtok(NULL,d);MD_alg = atof(p);
+        }
         else if (title == "epsilon")
         {
             p = strtok(NULL,d);epsilon = atof(p);

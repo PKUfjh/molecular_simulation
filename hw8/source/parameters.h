@@ -35,7 +35,7 @@ extern double **pre1_force;
 extern double epsilon;extern double sigma;
 extern double delta_t;
 extern int neighbor_step;extern int output_step;
-extern double mass; extern int read_vel;
+extern double mass; extern int read_vel;extern int MD_alg;
 extern double NA; extern double Bolzmann_k; extern double J_to_ev;
 
 /* global class of atoms, 
