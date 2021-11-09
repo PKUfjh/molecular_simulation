@@ -1,0 +1,16 @@
+id He
+natoms 864
+mass 4.0026  %unit in g/mol
+
+geo_path ../geo4.in
+read_vel 1 %0: random initilization of velocity at given temperature; 1: read velocity from input file
+T_0 100 %initial temperature
+r_cut 8.5 %rcut for L-J potential
+extra_cut 2 %extra distance for neighbor list
+neighbor_n 300 % maximum number of neighbor atoms
+delta_t 0.01 %MD simulation time step
+neighbor_step 5 %number of steps to renew the neighbor lists
+output_step 2 %number of steps to output the MD info
+
+epsilon 0.01032
+sigma 3.405

@@ -1,0 +1,17 @@
+How to compile and run: you can use either cmake or makefile mode, makefile applies for linux platform, cmake applies for all
+1.CMake
+mkdir build
+cd build
+cmake ..
+make
+cd ../bin
+./main
+2.Makefile
+cd source
+make
+cd ../bin
+./main
+
+modify read_vel in input file to determine how to set initial velocity
+read_vel:1  read from input file
+read_vel:0  using random number to initilize velocity
