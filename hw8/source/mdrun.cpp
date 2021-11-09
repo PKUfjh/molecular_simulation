@@ -95,7 +95,7 @@ void mdrun(int STEP){
             for (int k = 0; k < 3; k++)
             {
                 poslist[k] = atoms[i].pos[k] + atoms[i].vel[k] * delta_t + (pre1_force[i][k]*NA*0.1*0.5)/(mass*J_to_ev) * pow(delta_t,2);
-                vellist[k] = atoms[i].vel[k] * delta_t + (pre1_force[i][k]*NA*0.1*0.5)/(mass*J_to_ev) * pow(delta_t,2);
+                vellist[k] = atoms[i].vel[k]  + (pre1_force[i][k]*NA*0.1*0.5)/(mass*J_to_ev) * delta_t;
             }
             restrict_in_box(poslist);
             atoms[i].setpos(poslist);

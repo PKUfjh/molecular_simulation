@@ -3,498 +3,248 @@ total kinetic energy(eV): 13.4016766883
 total potential energy(eV): -39.2217360251
 total energy(eV): -25.8200593368
 Temperature (K): 120
-STEP 1
-total kinetic energy(eV): 13.3671150497
-total potential energy(eV): -39.1928222202
-total energy(eV): -25.8257071705
-Temperature (K): 119.690531511
 STEP 2
 total kinetic energy(eV): 13.185665424
 total potential energy(eV): -38.9992208529
 total energy(eV): -25.8135554289
 Temperature (K): 118.065812785
-STEP 3
-total kinetic energy(eV): 12.9948416079
-total potential energy(eV): -38.8043952323
-total energy(eV): -25.8095536244
-Temperature (K): 116.357156587
 STEP 4
 total kinetic energy(eV): 12.8755178567
 total potential energy(eV): -38.6917046279
 total energy(eV): -25.8161867711
 Temperature (K): 115.28871937
-STEP 5
-total kinetic energy(eV): 12.7702806971
-total potential energy(eV): -38.5900627885
-total energy(eV): -25.8197820915
-Temperature (K): 114.346414952
 STEP 6
 total kinetic energy(eV): 12.6622602666
 total potential energy(eV): -38.4778880142
 total energy(eV): -25.8156277476
 Temperature (K): 113.379188838
-STEP 7
-total kinetic energy(eV): 12.5851511967
-total potential energy(eV): -38.4021022352
-total energy(eV): -25.8169510385
-Temperature (K): 112.688746246
 STEP 8
 total kinetic energy(eV): 12.5694564911
 total potential energy(eV): -38.3778268021
 total energy(eV): -25.808370311
 Temperature (K): 112.548214228
-STEP 9
-total kinetic energy(eV): 12.6702339676
-total potential energy(eV): -38.4884512623
-total energy(eV): -25.8182172947
-Temperature (K): 113.450586182
 STEP 10
 total kinetic energy(eV): 12.7851099845
 total potential energy(eV): -38.6082646073
 total energy(eV): -25.8231546228
 Temperature (K): 114.479197926
-STEP 11
-total kinetic energy(eV): 12.8231370024
-total potential energy(eV): -38.6423616872
-total energy(eV): -25.8192246848
-Temperature (K): 114.81969578
 STEP 12
 total kinetic energy(eV): 12.8115071489
 total potential energy(eV): -38.6268958429
 total energy(eV): -25.815388694
 Temperature (K): 114.715560868
-STEP 13
-total kinetic energy(eV): 12.7863432354
-total potential energy(eV): -38.6047800726
-total energy(eV): -25.8184368372
-Temperature (K): 114.490240582
 STEP 14
 total kinetic energy(eV): 12.7450988642
 total potential energy(eV): -38.5593626251
 total energy(eV): -25.8142637608
 Temperature (K): 114.120934214
-STEP 15
-total kinetic energy(eV): 12.7435457707
-total potential energy(eV): -38.5556696491
-total energy(eV): -25.8121238784
-Temperature (K): 114.107027654
 STEP 16
 total kinetic energy(eV): 12.8064211054
 total potential energy(eV): -38.6239567436
 total energy(eV): -25.8175356382
 Temperature (K): 114.670019908
-STEP 17
-total kinetic energy(eV): 12.8830088416
-total potential energy(eV): -38.7019284143
-total energy(eV): -25.8189195728
-Temperature (K): 115.355794424
 STEP 18
 total kinetic energy(eV): 12.9151480208
 total potential energy(eV): -38.7384972254
 total energy(eV): -25.8233492046
 Temperature (K): 115.64357196
-STEP 19
-total kinetic energy(eV): 12.8453361215
-total potential energy(eV): -38.6642920605
-total energy(eV): -25.8189559389
-Temperature (K): 115.01846899
 STEP 20
 total kinetic energy(eV): 12.7118705962
 total potential energy(eV): -38.5259046495
 total energy(eV): -25.8140340532
 Temperature (K): 113.823404864
-STEP 21
-total kinetic energy(eV): 12.6140356608
-total potential energy(eV): -38.4164550431
-total energy(eV): -25.8024193823
-Temperature (K): 112.947380727
 STEP 22
 total kinetic energy(eV): 12.6780599939
 total potential energy(eV): -38.483307373
 total energy(eV): -25.8052473791
 Temperature (K): 113.520661231
-STEP 23
-total kinetic energy(eV): 12.856832582
-total potential energy(eV): -38.6753198104
-total energy(eV): -25.8184872284
-Temperature (K): 115.121409487
 STEP 24
 total kinetic energy(eV): 12.9702516746
 total potential energy(eV): -38.7914259944
 total energy(eV): -25.8211743198
 Temperature (K): 116.136975779
-STEP 25
-total kinetic energy(eV): 12.9570566346
-total potential energy(eV): -38.7757218551
-total energy(eV): -25.8186652205
-Temperature (K): 116.018826026
 STEP 26
 total kinetic energy(eV): 12.8724226226
 total potential energy(eV): -38.6837893802
 total energy(eV): -25.8113667576
 Temperature (K): 115.261004324
-STEP 27
-total kinetic energy(eV): 12.828358101
-total potential energy(eV): -38.6355121213
-total energy(eV): -25.8071540202
-Temperature (K): 114.866446037
 STEP 28
 total kinetic energy(eV): 12.8777723865
 total potential energy(eV): -38.6941242537
 total energy(eV): -25.8163518672
 Temperature (K): 115.308906663
-STEP 29
-total kinetic energy(eV): 12.9189071831
-total potential energy(eV): -38.7406108528
-total energy(eV): -25.8217036697
-Temperature (K): 115.677231888
 STEP 30
 total kinetic energy(eV): 12.8907159757
 total potential energy(eV): -38.7073454764
 total energy(eV): -25.8166295006
 Temperature (K): 115.4248049
-STEP 31
-total kinetic energy(eV): 12.8426738597
-total potential energy(eV): -38.6610436993
-total energy(eV): -25.8183698396
-Temperature (K): 114.994630822
 STEP 32
 total kinetic energy(eV): 12.8011563169
 total potential energy(eV): -38.6143529935
 total energy(eV): -25.8131966766
 Temperature (K): 114.622878447
-STEP 33
-total kinetic energy(eV): 12.7923839015
-total potential energy(eV): -38.6130427495
-total energy(eV): -25.820658848
-Temperature (K): 114.544329331
 STEP 34
 total kinetic energy(eV): 12.7647043359
 total potential energy(eV): -38.5856367836
 total energy(eV): -25.8209324477
 Temperature (K): 114.296483637
-STEP 35
-total kinetic energy(eV): 12.7421892981
-total potential energy(eV): -38.5544236101
-total energy(eV): -25.812234312
-Temperature (K): 114.094881658
 STEP 36
 total kinetic energy(eV): 12.8070521764
 total potential energy(eV): -38.6243688744
 total energy(eV): -25.817316698
 Temperature (K): 114.675670583
-STEP 37
-total kinetic energy(eV): 12.8955099099
-total potential energy(eV): -38.7192922125
-total energy(eV): -25.8237823026
-Temperature (K): 115.467730283
 STEP 38
 total kinetic energy(eV): 12.9004466892
 total potential energy(eV): -38.7199063571
 total energy(eV): -25.8194596679
 Temperature (K): 115.511934716
-STEP 39
-total kinetic energy(eV): 12.8423148136
-total potential energy(eV): -38.6541086417
-total energy(eV): -25.8117938281
-Temperature (K): 114.991415886
 STEP 40
 total kinetic energy(eV): 12.8057663477
 total potential energy(eV): -38.6220909801
 total energy(eV): -25.8163246324
 Temperature (K): 114.66415714
-STEP 41
-total kinetic energy(eV): 12.7539339205
-total potential energy(eV): -38.5766168239
-total energy(eV): -25.8226829034
-Temperature (K): 114.200044223
 STEP 42
 total kinetic energy(eV): 12.6492655037
 total potential energy(eV): -38.4619215788
 total energy(eV): -25.8126560751
 Temperature (K): 113.262832386
-STEP 43
-total kinetic energy(eV): 12.6281283148
-total potential energy(eV): -38.4322223341
-total energy(eV): -25.8040940193
-Temperature (K): 113.07356781
 STEP 44
 total kinetic energy(eV): 12.797062639
 total potential energy(eV): -38.6106125341
 total energy(eV): -25.8135498951
 Temperature (K): 114.586223231
-STEP 45
-total kinetic energy(eV): 13.0226305067
-total potential energy(eV): -38.8498262245
-total energy(eV): -25.8271957179
-Temperature (K): 116.605981262
 STEP 46
 total kinetic energy(eV): 13.1046581882
 total potential energy(eV): -38.9349818124
 total energy(eV): -25.8303236242
 Temperature (K): 117.340465611
-STEP 47
-total kinetic energy(eV): 12.9828529677
-total potential energy(eV): -38.8063297016
-total energy(eV): -25.8234767339
-Temperature (K): 116.249809062
 STEP 48
 total kinetic energy(eV): 12.8050748879
 total potential energy(eV): -38.6061805447
 total energy(eV): -25.8011056568
 Temperature (K): 114.657965737
-STEP 49
-total kinetic energy(eV): 12.7935699861
-total potential energy(eV): -38.6098201345
-total energy(eV): -25.8162501484
-Temperature (K): 114.554949656
 STEP 50
 total kinetic energy(eV): 12.8513355799
 total potential energy(eV): -38.6691867077
 total energy(eV): -25.8178511278
 Temperature (K): 115.072188761
-STEP 51
-total kinetic energy(eV): 12.8914992404
-total potential energy(eV): -38.7051656819
-total energy(eV): -25.8136664414
-Temperature (K): 115.431818334
 STEP 52
 total kinetic energy(eV): 12.948813894
 total potential energy(eV): -38.7651923825
 total energy(eV): -25.8163784886
 Temperature (K): 115.945019673
-STEP 53
-total kinetic energy(eV): 12.9954538846
-total potential energy(eV): -38.8130532336
-total energy(eV): -25.8175993489
-Temperature (K): 116.362638976
 STEP 54
 total kinetic energy(eV): 13.0326876184
 total potential energy(eV): -38.8482704249
 total energy(eV): -25.8155828065
 Temperature (K): 116.696033681
-STEP 55
-total kinetic energy(eV): 13.054060805
-total potential energy(eV): -38.8692662831
-total energy(eV): -25.8152054781
-Temperature (K): 116.887411406
 STEP 56
 total kinetic energy(eV): 13.056399353
 total potential energy(eV): -38.8633861058
 total energy(eV): -25.8069867528
 Temperature (K): 116.908351007
-STEP 57
-total kinetic energy(eV): 13.0969918879
-total potential energy(eV): -38.9108183764
-total energy(eV): -25.8138264884
-Temperature (K): 117.271820766
 STEP 58
 total kinetic energy(eV): 13.1209317326
 total potential energy(eV): -38.9345316003
 total energy(eV): -25.8135998676
 Temperature (K): 117.486180613
-STEP 59
-total kinetic energy(eV): 13.099480244
-total potential energy(eV): -38.9175138626
-total energy(eV): -25.8180336186
-Temperature (K): 117.294101764
 STEP 60
 total kinetic energy(eV): 12.9964906192
 total potential energy(eV): -38.8169746606
 total energy(eV): -25.8204840414
 Temperature (K): 116.371922005
-STEP 61
-total kinetic energy(eV): 12.8108483481
-total potential energy(eV): -38.6271328793
-total energy(eV): -25.8162845312
-Temperature (K): 114.709661898
 STEP 62
 total kinetic energy(eV): 12.6422378152
 total potential energy(eV): -38.4492162022
 total energy(eV): -25.806978387
 Temperature (K): 113.199905736
-STEP 63
-total kinetic energy(eV): 12.6486877225
-total potential energy(eV): -38.4525589609
-total energy(eV): -25.8038712384
-Temperature (K): 113.257658874
 STEP 64
 total kinetic energy(eV): 12.8315560255
 total potential energy(eV): -38.6544839972
 total energy(eV): -25.8229279717
 Temperature (K): 114.895080583
-STEP 65
-total kinetic energy(eV): 12.9591595339
-total potential energy(eV): -38.7879739887
-total energy(eV): -25.8288144548
-Temperature (K): 116.037655604
 STEP 66
 total kinetic energy(eV): 12.9177376581
 total potential energy(eV): -38.7409205087
 total energy(eV): -25.8231828506
 Temperature (K): 115.666759841
-STEP 67
-total kinetic energy(eV): 12.7933653339
-total potential energy(eV): -38.6040954025
-total energy(eV): -25.8107300687
-Temperature (K): 114.553117179
 STEP 68
 total kinetic energy(eV): 12.7606355648
 total potential energy(eV): -38.5688128901
 total energy(eV): -25.8081773253
 Temperature (K): 114.260051439
-STEP 69
-total kinetic energy(eV): 12.8716552474
-total potential energy(eV): -38.6869263017
-total energy(eV): -25.8152710543
-Temperature (K): 115.254133167
 STEP 70
 total kinetic energy(eV): 13.0097157704
 total potential energy(eV): -38.8357441407
 total energy(eV): -25.8260283703
 Temperature (K): 116.490341377
-STEP 71
-total kinetic energy(eV): 13.021730713
-total potential energy(eV): -38.8482452853
-total energy(eV): -25.8265145723
-Temperature (K): 116.597924416
 STEP 72
 total kinetic energy(eV): 12.893138612
 total potential energy(eV): -38.7107586117
 total energy(eV): -25.8176199997
 Temperature (K): 115.446497437
-STEP 73
-total kinetic energy(eV): 12.7409834831
-total potential energy(eV): -38.5531735725
-total energy(eV): -25.8121900894
-Temperature (K): 114.084084666
 STEP 74
 total kinetic energy(eV): 12.6627259191
 total potential energy(eV): -38.4718341514
 total energy(eV): -25.8091082323
 Temperature (K): 113.383358339
-STEP 75
-total kinetic energy(eV): 12.7128250733
-total potential energy(eV): -38.524374768
-total energy(eV): -25.8115496947
-Temperature (K): 113.83195135
 STEP 76
 total kinetic energy(eV): 12.8644199672
 total potential energy(eV): -38.6774827654
 total energy(eV): -25.8130627982
 Temperature (K): 115.189347719
-STEP 77
-total kinetic energy(eV): 13.0445207349
-total potential energy(eV): -38.8641220628
-total energy(eV): -25.8196013279
-Temperature (K): 116.801988631
 STEP 78
 total kinetic energy(eV): 13.1387721841
 total potential energy(eV): -38.9668331165
 total energy(eV): -25.8280609324
 Temperature (K): 117.645925862
-STEP 79
-total kinetic energy(eV): 13.0595678032
-total potential energy(eV): -38.8799064858
-total energy(eV): -25.8203386826
-Temperature (K): 116.936721638
 STEP 80
 total kinetic energy(eV): 12.915151361
 total potential energy(eV): -38.7280243856
 total energy(eV): -25.8128730246
 Temperature (K): 115.643601869
-STEP 81
-total kinetic energy(eV): 12.8176114449
-total potential energy(eV): -38.6414710711
-total energy(eV): -25.8238596261
-Temperature (K): 114.770219366
 STEP 82
 total kinetic energy(eV): 12.7313534949
 total potential energy(eV): -38.5452564674
 total energy(eV): -25.8139029724
 Temperature (K): 113.997856755
-STEP 83
-total kinetic energy(eV): 12.6966267466
-total potential energy(eV): -38.5215210959
-total energy(eV): -25.8248943493
-Temperature (K): 113.686909857
 STEP 84
 total kinetic energy(eV): 12.6648111256
 total potential energy(eV): -38.4827531457
 total energy(eV): -25.8179420201
 Temperature (K): 113.402029494
-STEP 85
-total kinetic energy(eV): 12.6702754434
-total potential energy(eV): -38.4833576612
-total energy(eV): -25.8130822178
-Temperature (K): 113.450957561
 STEP 86
 total kinetic energy(eV): 12.7912513899
 total potential energy(eV): -38.6067020333
 total energy(eV): -25.8154506434
 Temperature (K): 114.534188706
-STEP 87
-total kinetic energy(eV): 12.957133131
-total potential energy(eV): -38.7850053037
-total energy(eV): -25.8278721727
-Temperature (K): 116.019510983
 STEP 88
 total kinetic energy(eV): 13.013741504
 total potential energy(eV): -38.8366814137
 total energy(eV): -25.8229399096
 Temperature (K): 116.526388213
-STEP 89
-total kinetic energy(eV): 12.9703043706
-total potential energy(eV): -38.7914687388
-total energy(eV): -25.8211643682
-Temperature (K): 116.137447624
 STEP 90
 total kinetic energy(eV): 12.8851699669
 total potential energy(eV): -38.7018780415
 total energy(eV): -25.8167080746
 Temperature (K): 115.375145364
-STEP 91
-total kinetic energy(eV): 12.8307013252
-total potential energy(eV): -38.6436705269
-total energy(eV): -25.8129692017
-Temperature (K): 114.887427509
 STEP 92
 total kinetic energy(eV): 12.8716432659
 total potential energy(eV): -38.6880266908
 total energy(eV): -25.8163834249
 Temperature (K): 115.254025883
-STEP 93
-total kinetic energy(eV): 12.9733326269
-total potential energy(eV): -38.7969806314
-total energy(eV): -25.8236480045
-Temperature (K): 116.164562945
 STEP 94
 total kinetic energy(eV): 13.0018552523
 total potential energy(eV): -38.8291473276
 total energy(eV): -25.8272920753
 Temperature (K): 116.419957485
-STEP 95
-total kinetic energy(eV): 12.9150830607
-total potential energy(eV): -38.7267031869
-total energy(eV): -25.8116201262
-Temperature (K): 115.642990301
 STEP 96
 total kinetic energy(eV): 12.8760057738
 total potential energy(eV): -38.6850144064
 total energy(eV): -25.8090086326
 Temperature (K): 115.29308823
-STEP 97
-total kinetic energy(eV): 12.9410146381
-total potential energy(eV): -38.7547022723
-total energy(eV): -25.8136876343
-Temperature (K): 115.875184328
 STEP 98
 total kinetic energy(eV): 13.0458747288
 total potential energy(eV): -38.8655258915
 total energy(eV): -25.8196511626
 Temperature (K): 116.814112433
-STEP 99
-total kinetic energy(eV): 13.0981871069
-total potential energy(eV): -38.9206953981
-total energy(eV): -25.8225082912
-Temperature (K): 117.282522881
