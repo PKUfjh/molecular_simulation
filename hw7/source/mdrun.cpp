@@ -22,19 +22,13 @@ void mdrun(int STEP){
     {
         for (int i = 0; i < natoms; i++)
         {
-            for (int k = 0; k < 3; k++)
-            {
-                pre1_pos[i][k] = atoms[i].pos[k];
-            }
+            memcpy(pre1_pos[i],atoms[i].pos,3*sizeof(double));
         }
         for (int i = 0; i < natoms; i++)
         {
             double force[4];
             memcpy(force,energy_force(atoms[i]),sizeof(force));
-            for (int k = 0; k < 3; k++)
-            {
-                pre1_force[i][k] = force[k+1];
-            }
+            memcpy(pre1_force[i],force+1,3*sizeof(double));
             pot_energy += force[0];
         }
         kinetic_energy = kin_energy();
@@ -72,10 +66,7 @@ void mdrun(int STEP){
         {
             double force[4];
             memcpy(force,energy_force(atoms[i]),sizeof(force));
-            for (int k = 0; k < 3; k++)
-            {
-                pre1_force[i][k] = force[k+1];
-            }
+            memcpy(pre1_force[i],force+1,3*sizeof(double));
             pot_energy += force[0];
         }
 
@@ -86,11 +77,8 @@ void mdrun(int STEP){
             {
                 atoms[i].vel[k] = shortest(atoms[i].pos,pre1_pos[i])[k+1]/delta_t + (pre1_force[i][k]*NA*0.1*0.5)/(mass*J_to_ev) * delta_t;
             }
-            for (int k = 0; k < 3; k++)
-            {
-                pre2_pos[i][k] = pre1_pos[i][k];
-                pre1_pos[i][k] = atoms[i].pos[k];
-            }
+            memcpy(pre2_pos[i],pre1_pos[i],3*sizeof(double));
+            memcpy(pre1_pos[i],atoms[i].pos,3*sizeof(double));
         }
         kinetic_energy = kin_energy();
         total_energy = pot_energy + kinetic_energy;
