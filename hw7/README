@@ -1,13 +1,14 @@
-How to compile and run: you can use either cmake or makefile mode, makefile applies for linux platform, cmake applies for all
-1.CMake
-mkdir build
-cd build
-cmake ..
+How to compile and run: you can use either cmake or makefile mode, you better use makefile due to cmake version inconsistent
+1.Makefile
+cd source
 make
 cd ../bin
 ./main
-2.Makefile
-cd source
+
+2.CMake
+mkdir build
+cd build
+cmake ..
 make
 cd ../bin
 ./main
