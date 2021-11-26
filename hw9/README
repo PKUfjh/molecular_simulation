@@ -1,0 +1,16 @@
+How to compile and run: you can use either cmake or makefile mode
+1.Makefile
+cd source
+make
+cd ../bin
+./main
+
+2.CMake
+mkdir build
+cd build
+cmake ..
+make
+cd ../bin
+./main
+
+please see input file to change running parameters
