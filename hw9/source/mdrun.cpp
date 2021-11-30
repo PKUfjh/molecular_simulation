@@ -8,6 +8,8 @@
 #include "force_energy.h"
 #include "kin_energy.h"
 #include "mdrun.h"
+#include <random>
+#include <chrono>
 
 void mdrun(int STEP){
     ofstream outfile;
@@ -18,6 +20,14 @@ void mdrun(int STEP){
     double kinetic_energy = 0;
     double pot_energy = 0;
     double temperature = 0;
+    // 从epoch（1970年1月1日00:00:00 UTC）开始经过的纳秒数，unsigned类型会截断这个值
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    std::default_random_engine generator(seed);
+    // 第一个参数为高斯分布的平均值，第二个参数为标准差
+    double gauss_sigma = sqrt(Bolzmann_k*T_res*NA*1000/mass)*0.01;
+    std::normal_distribution<double> normal(0.0, gauss_sigma);
+    //均匀分布产生碰撞概率
+    std::uniform_real_distribution<double> uniform(0.0,1.0); 
     if (STEP == 0)
     {
         for (int i = 0; i < natoms; i++)
@@ -112,9 +122,15 @@ void mdrun(int STEP){
 
         for (int i = 0; i < natoms; i++)
         {
-            for (int k = 0; k < 3; k++)
-            {
-                atoms[i].vel[k] = atoms[i].vel[k] + (pre1_force[i][k]*NA*0.1*0.5)/(mass*J_to_ev) * delta_t;
+            if (uniform(generator) < 1.0/nraise){
+                for (int k = 0; k < 3; k++){
+                    atoms[i].vel[k] = normal(generator);
+                }
+            }
+            else{
+                for (int k = 0; k < 3; k++){
+                    atoms[i].vel[k] = atoms[i].vel[k] + (pre1_force[i][k]*NA*0.1*0.5)/(mass*J_to_ev) * delta_t;
+                }
             }
             memcpy(pre2_pos[i],pre1_pos[i],3*sizeof(double));
             memcpy(pre1_pos[i],atoms[i].pos,3*sizeof(double));

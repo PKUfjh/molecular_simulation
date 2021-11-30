@@ -72,9 +72,25 @@ void initialize(){
         {
             p = strtok(NULL,d);output_step = atof(p);
         }
+        else if (title == "MD_step")
+        {
+            p = strtok(NULL,d);MD_step = atof(p);
+        }
         else if (title == "MD_alg")
         {
             p = strtok(NULL,d);MD_alg = atof(p);
+        }
+        else if (title == "ensemble")
+        {
+            p = strtok(NULL,d);ensemble = p;
+        }
+        else if (title == "T_res")
+        {
+            p = strtok(NULL,d);T_res = atof(p);
+        }
+        else if (title == "nraise")
+        {
+            p = strtok(NULL,d);nraise = atof(p);
         }
         else if (title == "epsilon")
         {

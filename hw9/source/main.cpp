@@ -42,7 +42,7 @@ int main() {
     initialize();// initialization of the global parameters, position and velocity of atoms
     
     //run molecular dynamics
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i <= MD_step; i++)
     {
         if (i%neighbor_step == 0)
         {

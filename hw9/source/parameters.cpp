@@ -16,6 +16,7 @@ double **pre1_force;
 double mass = 0; int read_vel = 0;
 int neighbor_step = 0;int output_step = 0;int MD_alg = 0;
 double NA = 6.02214076e23; double Bolzmann_k = 1.380649e-23;double J_to_ev = 6.241509074e18;
+int MD_step = 0;string ensemble = ""; double T_res = 0;int nraise = 0;
 
 
 Atom *atoms;

@@ -22,6 +22,7 @@ read_vel: how the velocity is initialized
 NA: Avogadro constant
 Bolzmann_k: Bolzmann constant
 J_to_eV: unit transformation from Joule to eV
+MD_step:total MD steps
 */
 
 extern int natoms;extern int neighbor_n;
@@ -37,6 +38,7 @@ extern double delta_t;
 extern int neighbor_step;extern int output_step;
 extern double mass; extern int read_vel;extern int MD_alg;
 extern double NA; extern double Bolzmann_k; extern double J_to_ev;
+extern int MD_step;extern string ensemble; extern double T_res; extern int nraise;
 
 /* global class of atoms, 
 saving ID, index, number of neigh atoms, neighbor list, position and velocity of the atoms */
