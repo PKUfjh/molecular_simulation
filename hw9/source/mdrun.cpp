@@ -208,5 +208,14 @@ void mdrun(int STEP){
         outfile <<"total energy(eV): " << total_energy << endl;
         outfile <<"Temperature (K): " << temperature << endl;
         outfile.close();
+        if (STEP == 0)
+        {
+            outfile.open("../temperature.log",ios::out);
+        }
+        else{
+            outfile.open("../temperature.log",ios::app);
+        }
+        outfile << temperature << endl;
+        outfile.close();
     } 
 }

@@ -14,3 +14,8 @@ cd ../bin
 ./main
 
 please see input file to change running parameters
+
+plot the temerature change in NVT ensemble：
+first run c++ code,
+then python plot.py,
+the fig is temperature change.png
