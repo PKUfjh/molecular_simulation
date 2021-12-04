@@ -137,6 +137,7 @@ void mdrun(int STEP){
         else{
             outfile.open("../position.txt",ios::app);
         }
+        outfile << natoms << endl;
         outfile << "STEP " << STEP << endl;
         for (int i = 0; i < natoms; i++)
         {

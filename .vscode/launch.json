@@ -21,19 +21,6 @@
       ],
       "preLaunchTask": "C/C++: g++ build active file",
       "miDebuggerPath": "/usr/bin/gdb"
-    },
-    {
-      "name": "C/C++ Runner: Debug Session",
-      "type": "cppdbg",
-      "request": "launch",
-      "args": [],
-      "stopAtEntry": true,
-      "cwd": "/Users/fanjiahao2/Desktop/molecular_simulation/hw7",
-      "environment": [],
-      "program": "/Users/fanjiahao2/Desktop/molecular_simulation/hw7/build/Debug/outDebug",
-      "internalConsoleOptions": "openOnSessionStart",
-      "MIMode": "gdb",
-      "externalConsole": true
     }
   ]
 }

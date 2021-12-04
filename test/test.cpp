@@ -1,6 +1,7 @@
 #include <random>
 #include <chrono>
 #include <iostream>
+#include <cmath>
  
 int main(void) {
   // 从epoch（1970年1月1日00:00:00 UTC）开始经过的纳秒数，unsigned类型会截断这个值
@@ -11,8 +12,5 @@ int main(void) {
   std::normal_distribution<double> normal(0.0, 1.0);
   std::uniform_real_distribution<double> uniform(0.0,1.0);
  
-  for (int i = 0; i < 10; ++i)
-    std::cout << normal(generator) << std::endl;
-  for (int i = 0; i < 10; ++i)
-    std::cout << sqrt(8) << std::endl;
+  std::cout << pow(10,2);
 }
