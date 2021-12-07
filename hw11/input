@@ -27,4 +27,4 @@ rdf_rcut 8.5 %rcut for rdf
 rdf_dr 0.01 %radius of rdf 
 rdf_geo1 2000 %step to start calculating rdf
 rdf_geo2 10000 %step to end calculating rdf
-rdf_interval 1 %steps to take average in rdf calculation
+rdf_interval 10 %steps to take average in rdf calculation

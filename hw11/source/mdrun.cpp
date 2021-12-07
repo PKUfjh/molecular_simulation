@@ -92,7 +92,7 @@ void mdrun(int STEP){
                 {
                     for (int i = 0; i < 85; i++)
                     {
-                        rdflist[i] = 1.0*rdflist[i]/(rdf_geo2-rdf_geo1);
+                        rdflist[i] = 1.0*rdflist[i]*rdf_interval/(rdf_geo2-rdf_geo1);
                     }
                 }
             }
