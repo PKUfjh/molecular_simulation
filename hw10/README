@@ -1,11 +1,4 @@
-How to compile and run: you can use either cmake or makefile mode
-1.Makefile
-cd source
-make
-cd ../bin
-./main
-
-2.CMake
+How to compile and run:CMake
 mkdir build
 cd build
 cmake ..
@@ -15,7 +8,7 @@ cd ../bin
 
 please see input file to change running parameters
 
-plot the temerature change in NVT ensemble：
+plot the diffusion coefficient：
 first run c++ code,
 then python plot.py,
-the fig is temperature change.png
+the fig is MSD change.png and MSD fit.png
