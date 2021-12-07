@@ -8,6 +8,7 @@
 #include "initialize.h"
 #include "parameters.h"
 #include "kin_energy.h"
+#include "pos_distance.h"
 
 using namespace std;
 
@@ -107,6 +108,30 @@ void initialize(){
         else if (title == "sigma")
         {
             p = strtok(NULL,d);sigma = atof(p);
+        }
+        else if (title == "cal_rdf")
+        {
+            p = strtok(NULL,d);cal_rdf = atof(p);
+        }
+        else if (title == "rdf_rcut")
+        {
+            p = strtok(NULL,d);rdf_rcut = atof(p);
+        }
+        else if (title == "rdf_dr")
+        {
+            p = strtok(NULL,d);rdf_dr = atof(p);
+        }
+        else if (title == "rdf_geo1")
+        {
+            p = strtok(NULL,d);rdf_geo1= atof(p);
+        }
+        else if (title == "rdf_geo2")
+        {
+            p = strtok(NULL,d);rdf_geo2 = atof(p);
+        }
+        else if (title == "rdf_interval")
+        {
+            p = strtok(NULL,d);rdf_interval = atof(p);
         }
         else
         {
@@ -267,6 +292,13 @@ void initialize(){
             atoms[j].vel[1] = sqrt(factor)*atoms[j].vel[1];
             atoms[j].vel[2] = sqrt(factor)*atoms[j].vel[2];
         }
+    }
+
+    volume = 1;
+    double zero[3] = {0};
+    for (int i = 0; i < 3; i++)
+    {
+        volume = volume * single_distance(vector_a[i],zero);
     }
 
     for (int i = 0; i < natoms; i++)

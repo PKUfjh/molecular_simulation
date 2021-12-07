@@ -41,6 +41,8 @@ extern double mass; extern int read_vel;extern int MD_alg;
 extern double NA; extern double Bolzmann_k; extern double J_to_ev;
 extern int MD_step;extern string ensemble; extern double T_res; extern int nraise;
 extern int cal_msd; extern int msd_interval;
+extern int cal_rdf; extern double rdf_rcut;extern double rdf_dr; extern int rdf_geo1; extern int rdf_geo2; extern int rdf_interval;
+extern double rdflist[85]; extern double volume;
 
 /* global class of atoms, 
 saving ID, index, number of neigh atoms, neighbor list, position and velocity of the atoms */

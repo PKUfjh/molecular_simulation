@@ -11,6 +11,7 @@
 #include "msd.h"
 #include "velo_verlet.h"
 #include "verlet.h"
+#include "rdf.h"
 #include <random>
 #include <chrono>
 
@@ -75,6 +76,42 @@ void mdrun(int STEP){
         }
     }
 
+    //calculate the radial distribution function
+    if (cal_rdf == 1)
+    {
+        if (STEP >= rdf_geo1 && STEP <= rdf_geo2)
+        {
+            if ((STEP-rdf_geo1)%rdf_interval == 0)
+            {
+                for (int i = 0; i < 85; i++)
+                {
+                    double rad = i*0.1+0.005;
+                    rdflist[i] += rdf(rad);
+                }
+                if (STEP == rdf_geo2)
+                {
+                    for (int i = 0; i < 85; i++)
+                    {
+                        rdflist[i] = 1.0*rdflist[i]/(rdf_geo2-rdf_geo1);
+                    }
+                }
+            }
+        }
+        //output the radial distribution function
+        if (STEP == rdf_geo2){
+            outfile.open("../rdf.txt",ios::out);
+            for (int i = 0; i < 85; i++)
+            {
+                outfile << i*0.1+0.005  << "\t" << rdflist[i] << endl;
+            }
+            outfile.close();
+        }
+    }
+    
+    
+    
+    
+    
 
     //output MD run information for every 2 steps
     if (STEP % output_step == 0)
