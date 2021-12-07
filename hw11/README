@@ -1,0 +1,16 @@
+How to compile and run:CMake
+mkdir build
+cd build
+cmake ..
+make
+cd ../bin
+./main
+
+please see input file to change running parameters
+
+NVT ensemble is only valid for velocity verlet algorithm
+
+plot the diffusion coefficient：
+first run c++ code,
+then python plot.py,
+the fig is MSD change.png and MSD fit.png

@@ -1,0 +1,24 @@
+id He
+natoms 864
+mass 4.0026  %unit in g/mol
+
+geo_path ../geo4.in
+read_vel 1 %0: random initilization of velocity at given temperature; 1: read velocity from input file
+T_0 100 %initial temperature
+r_cut 8.5 %rcut for L-J potential
+extra_cut 2 %extra distance for neighbor list
+neighbor_n 300 % maximum number of neighbor atoms
+delta_t 0.01 %MD simulation time step
+neighbor_step 5 %number of steps to renew the neighbor lists
+output_step 20 %number of steps to output the MD info
+MD_step 1000 %total MD steps
+MD_alg 2 %MD algorithm, 1: Verlet algorithm; 2: Velocity Verlet algorithm
+
+epsilon 0.01032
+sigma 3.405
+
+ensemble NVT %NVE/NVT
+T_res 120 %temperature of reservoir
+nraise 70 %collison frequency of atoms
+cal_msd 1 %whether or not calculate the MD_step
+msd_interval 10 %number of steps to output the msd info
